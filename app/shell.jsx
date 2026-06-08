@@ -163,8 +163,8 @@ function Footer({ active }) {
         <div style={{ marginTop: 'var(--space-6)', paddingTop: 'var(--space-4)', borderTop: '1px solid var(--border-subtle)', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 'var(--space-3)', fontSize: 'var(--text-xs)', color: 'var(--text-muted)' }}>
           <span>© 2025 Schreinerei Hergert. Alle Rechte vorbehalten.</span>
           <span style={{ display: 'flex', gap: 'var(--space-4)', flexWrap: 'wrap' }}>
-            <a href="#" onClick={(e) => e.preventDefault()}>Impressum</a>
-            <a href="#" onClick={(e) => e.preventDefault()}>Datenschutz</a>
+            <a href="impressum.html">Impressum</a>
+            <a href="datenschutz.html">Datenschutz</a>
             <button onClick={() => window.dispatchEvent(new Event('hergert:cookie-open'))} style={{ background: 'none', border: 'none', padding: 0, color: 'inherit', font: 'inherit', cursor: 'pointer', textDecoration: 'underline', textUnderlineOffset: 2 }}>Cookie-Einstellungen</button>
           </span>
         </div>
@@ -215,7 +215,7 @@ function CookieBanner() {
             <h4>Wir respektieren Ihre Privatsphäre</h4>
             <p>
               Diese Website verwendet Cookies, um die Nutzung zu analysieren und Ihr Erlebnis zu verbessern.
-              Notwendige Cookies sind immer aktiv. Mehr dazu in unserer <a href="#" onClick={(e) => e.preventDefault()}>Datenschutzerklärung</a>.
+              Notwendige Cookies sind immer aktiv. Mehr dazu in unserer <a href="datenschutz.html">Datenschutzerklärung</a>.
               <span style={{ display: 'block', marginTop: 6, color: 'var(--text-muted)', fontSize: 'var(--text-xs)' }}>Platzhalter – im Live-Betrieb durch Cookiebot (CMP) ersetzen.</span>
             </p>
           </div>
