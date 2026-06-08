@@ -1,3 +1,6 @@
+# Cloudflare Worker source — already deployed, excluded so Pages ignores it
+worker-src/
+
 # Omelette design-tool sidecar (image slot state — not for production)
 .image-slots.state.json
 
