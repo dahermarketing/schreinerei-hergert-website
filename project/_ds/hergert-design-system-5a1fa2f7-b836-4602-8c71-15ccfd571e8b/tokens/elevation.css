@@ -1,0 +1,47 @@
+/* ============================================================
+   Hergert Design System — Elevation, Shadow & Motion Tokens
+   Soft, warm-tinted shadows. Restrained, calm motion.
+   ============================================================ */
+
+:root {
+  /* ---- Shadows (warm-tinted, soft) ---------------------- */
+  /* Shadow color is a warm brown-black, not neutral gray, so it
+     sits naturally on cream surfaces. */
+  --shadow-color: 28 24 18;   /* rgb of warm umber, used with /alpha */
+
+  --shadow-xs: 0 1px 2px rgb(var(--shadow-color) / 0.05);
+  --shadow-sm: 0 1px 3px rgb(var(--shadow-color) / 0.06),
+               0 1px 2px rgb(var(--shadow-color) / 0.04);
+  --shadow-md: 0 4px 12px rgb(var(--shadow-color) / 0.07),
+               0 2px 4px rgb(var(--shadow-color) / 0.05);
+  --shadow-lg: 0 12px 28px rgb(var(--shadow-color) / 0.10),
+               0 4px 10px rgb(var(--shadow-color) / 0.06);
+  --shadow-xl: 0 24px 48px rgb(var(--shadow-color) / 0.14),
+               0 8px 16px rgb(var(--shadow-color) / 0.08);
+
+  /* Card resting + hover elevation */
+  --shadow-card:       var(--shadow-sm);
+  --shadow-card-hover: var(--shadow-lg);
+
+  /* Focus ring */
+  --ring-focus: 0 0 0 3px rgb(160 120 80 / 0.35);   /* oak glow */
+
+  /* Image overlay gradient (for caption-on-photo) */
+  --overlay-photo: linear-gradient(to top,
+                   rgb(28 24 18 / 0.72) 0%,
+                   rgb(28 24 18 / 0.20) 45%,
+                   rgb(28 24 18 / 0) 75%); /* @kind other */
+
+  /* ---- Motion ------------------------------------------- */
+  --ease-standard: cubic-bezier(0.22, 0.61, 0.36, 1); /* @kind other */
+  --ease-emphasis: cubic-bezier(0.33, 0, 0.1, 1); /* @kind other */
+  --ease-in-out:   cubic-bezier(0.45, 0, 0.4, 1); /* @kind other */
+
+  --duration-fast:   140ms; /* @kind other */
+  --duration-base:   220ms; /* @kind other */
+  --duration-slow:   360ms; /* @kind other */
+  --duration-slower: 600ms; /* @kind other */
+
+  /* Card hover lift */
+  --hover-lift: translateY(-2px); /* @kind other */
+}

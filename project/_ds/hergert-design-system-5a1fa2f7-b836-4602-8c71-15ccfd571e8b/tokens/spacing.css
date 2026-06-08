@@ -1,0 +1,48 @@
+/* ============================================================
+   Hergert Design System — Spacing, Radius & Layout Tokens
+   Base unit 8px. Subtle rounded corners (4–8px).
+   ============================================================ */
+
+:root {
+  /* ---- Spacing scale (8px base) ------------------------- */
+  --space-0:   0;
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:   16px;
+  --space-4:   24px;
+  --space-5:   32px;
+  --space-6:   48px;
+  --space-7:   64px;
+  --space-8:   80px;
+  --space-9:   96px;
+  --space-10:  128px;
+  --space-11:  160px;
+
+  /* ---- Semantic spacing --------------------------------- */
+  --section-gap-desktop: var(--space-9);   /* 96px */
+  --section-gap-mobile:  var(--space-7);    /* 64px */
+  --card-padding:        var(--space-5);    /* 32px */
+  --card-padding-mobile: var(--space-4);    /* 24px */
+  --page-padding:        40px;
+  --page-padding-mobile: 20px;
+  --grid-gutter:         var(--space-4);    /* 24px */
+  --content-gap:         var(--space-3);    /* 16px */
+
+  /* ---- Radius (subtle) ---------------------------------- */
+  --radius-xs:   2px;
+  --radius-sm:   4px;   /* buttons, inputs, tags */
+  --radius-md:   8px;   /* cards */
+  --radius-lg:   12px;  /* large panels */
+  --radius-xl:   20px;  /* hero / feature blocks */
+  --radius-pill: 999px;
+  --radius-full: 50%;
+
+  /* ---- Layout ------------------------------------------- */
+  --container-max:   1200px;
+  --container-wide:  1320px;
+  --container-text:  680px;   /* readable prose measure */
+
+  /* ---- Borders ------------------------------------------ */
+  --border-width:       1px;
+  --border-width-thick: 2px;
+}
