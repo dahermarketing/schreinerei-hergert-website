@@ -1,9 +1,9 @@
 /* Shared site shell for the Schreinerei Hergert website.
-   Header (responsive + drawer), Footer, CTA banner, DSGVO cookie
-   banner + settings, mobile thumb bar, and the Page wrapper. */
+   Header (responsive + drawer), Footer, CTA banner, mobile thumb bar,
+   and the Page wrapper. Cookie consent is handled by Cookiebot. */
 
 const { Button, StatBlock } = (window.HergertDesignSystem_5a1fa2 || {});
-const { Mail, Phone, MapPin, Facebook, Instagram, ArrowRight, Menu, X, ShieldCheck } = (window.HIcons || {});
+const { Mail, Phone, MapPin, Facebook, Instagram, ArrowRight, Menu, X } = (window.HIcons || {});
 
 const ASSET = 'assets';
 const CONTACT = {
@@ -165,7 +165,7 @@ function Footer({ active }) {
           <span style={{ display: 'flex', gap: 'var(--space-4)', flexWrap: 'wrap' }}>
             <a href="impressum.html">Impressum</a>
             <a href="datenschutz.html">Datenschutz</a>
-            <button onClick={() => window.dispatchEvent(new Event('hergert:cookie-open'))} style={{ background: 'none', border: 'none', padding: 0, color: 'inherit', font: 'inherit', cursor: 'pointer', textDecoration: 'underline', textUnderlineOffset: 2 }}>Cookie-Einstellungen</button>
+            <a href="javascript:Cookiebot.renew()">Cookie-Einstellungen</a>
           </span>
         </div>
       </div>
@@ -183,91 +183,6 @@ function ThumbBar() {
   );
 }
 
-/* ---------- Cookie banner (Cookiebot placeholder) ---------- */
-const CONSENT_KEY = 'hergert-cookie-consent-v1';
-
-function CookieBanner() {
-  const [show, setShow] = React.useState(false);
-  const [settings, setSettings] = React.useState(false);
-  const [stat, setStat] = React.useState(false);
-  const [mkt, setMkt] = React.useState(false);
-
-  React.useEffect(() => {
-    let saved = null;
-    try { saved = JSON.parse(localStorage.getItem(CONSENT_KEY) || 'null'); } catch (e) {}
-    if (!saved) { setShow(true); }
-    else { setStat(!!saved.statistics); setMkt(!!saved.marketing); }
-    const open = () => { setShow(true); setSettings(true); };
-    window.addEventListener('hergert:cookie-open', open);
-    return () => window.removeEventListener('hergert:cookie-open', open);
-  }, []);
-
-  const persist = (val) => {
-    try { localStorage.setItem(CONSENT_KEY, JSON.stringify({ ...val, ts: Date.now() })); } catch (e) {}
-    setShow(false); setSettings(false);
-  };
-
-  return (
-    <React.Fragment>
-      <div className={`h-cookie${show && !settings ? ' is-open' : ''}`} role="dialog" aria-label="Cookie-Hinweis">
-        <div className="h-cookie__card">
-          <div className="h-cookie__text">
-            <h4>Wir respektieren Ihre Privatsphäre</h4>
-            <p>
-              Diese Website verwendet Cookies, um die Nutzung zu analysieren und Ihr Erlebnis zu verbessern.
-              Notwendige Cookies sind immer aktiv. Mehr dazu in unserer <a href="datenschutz.html">Datenschutzerklärung</a>.
-              <span style={{ display: 'block', marginTop: 6, color: 'var(--text-muted)', fontSize: 'var(--text-xs)' }}>Platzhalter – im Live-Betrieb durch Cookiebot (CMP) ersetzen.</span>
-            </p>
-          </div>
-          <div className="h-cookie__actions">
-            <button className="h-cookie__settings" onClick={() => setSettings(true)}>Einstellungen</button>
-            <Button variant="secondary" size="sm" onClick={() => persist({ statistics: false, marketing: false })}>Nur notwendige</Button>
-            <Button variant="primary" size="sm" onClick={() => persist({ statistics: true, marketing: true })}>Alle akzeptieren</Button>
-          </div>
-        </div>
-      </div>
-
-      {settings && (
-        <div className="h-cookie-scrim" role="dialog" aria-modal="true" aria-label="Cookie-Einstellungen" onClick={(e) => { if (e.target === e.currentTarget) setSettings(false); }}>
-          <div className="h-cookie-modal">
-            <div className="h-cookie-modal__hd" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-              <ShieldCheck size={22} style={{ color: 'var(--oak-600)' }} />
-              <h3 style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 'var(--text-h3)', margin: 0, color: 'var(--text-heading)' }}>Cookie-Einstellungen</h3>
-            </div>
-            <div className="h-cookie-modal__bd">
-              <div className="h-cookie-row">
-                <div>
-                  <div style={{ fontWeight: 600, color: 'var(--text-primary)', fontSize: 'var(--text-base)' }}>Notwendig</div>
-                  <p style={{ margin: '2px 0 0', fontSize: 'var(--text-sm)', color: 'var(--text-secondary)' }}>Für den Betrieb der Website erforderlich. Immer aktiv.</p>
-                </div>
-                <input type="checkbox" className="h-switch" checked disabled readOnly />
-              </div>
-              <div className="h-cookie-row">
-                <div>
-                  <div style={{ fontWeight: 600, color: 'var(--text-primary)', fontSize: 'var(--text-base)' }}>Statistik</div>
-                  <p style={{ margin: '2px 0 0', fontSize: 'var(--text-sm)', color: 'var(--text-secondary)' }}>Anonyme Reichweitenmessung, um die Website zu verbessern.</p>
-                </div>
-                <input type="checkbox" className="h-switch" checked={stat} onChange={(e) => setStat(e.target.checked)} />
-              </div>
-              <div className="h-cookie-row">
-                <div>
-                  <div style={{ fontWeight: 600, color: 'var(--text-primary)', fontSize: 'var(--text-base)' }}>Marketing</div>
-                  <p style={{ margin: '2px 0 0', fontSize: 'var(--text-sm)', color: 'var(--text-secondary)' }}>Für personalisierte Inhalte und Anzeigen. Aktuell nicht im Einsatz.</p>
-                </div>
-                <input type="checkbox" className="h-switch" checked={mkt} onChange={(e) => setMkt(e.target.checked)} />
-              </div>
-            </div>
-            <div className="h-cookie-modal__ft">
-              <Button variant="secondary" size="sm" onClick={() => persist({ statistics: false, marketing: false })}>Nur notwendige</Button>
-              <Button variant="primary" size="sm" onClick={() => persist({ statistics: stat, marketing: mkt })}>Auswahl speichern</Button>
-            </div>
-          </div>
-        </div>
-      )}
-    </React.Fragment>
-  );
-}
-
 /* ---------- Page wrapper ---------- */
 function Page({ active, children }) {
   return (
@@ -276,7 +191,6 @@ function Page({ active, children }) {
       <main className="h-main">{children}</main>
       <Footer active={active} />
       <ThumbBar />
-      <CookieBanner />
     </React.Fragment>
   );
 }
@@ -287,4 +201,4 @@ function mountPage(active, Screen) {
   );
 }
 
-Object.assign(window, { HShell: { Container, Section, CtaBanner, Header, Footer, ThumbBar, CookieBanner, Page, mountPage, CONTACT, NAV, ASSET } });
+Object.assign(window, { HShell: { Container, Section, CtaBanner, Header, Footer, ThumbBar, Page, mountPage, CONTACT, NAV, ASSET } });
