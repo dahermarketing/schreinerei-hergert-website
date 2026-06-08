@@ -1,4 +1,4 @@
-/* Kontakt screen — Schreinerei Hergert */
+/* Kontakt screen — Schreinerei Hergert — live form */
 const { Button, Input, Select, Textarea, SectionHeading, Badge } = (window.HergertDesignSystem_5a1fa2 || {});
 const { Section, CONTACT } = (window.HShell || {});
 const { Mail, Phone, MapPin, Clock, Check, ArrowRight, Navigation } = (window.HIcons || {});
