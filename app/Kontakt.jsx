@@ -16,6 +16,7 @@ function InfoRow({ icon: Icon, label, children }) {
 }
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const WORKER_URL = 'https://schreinerei-hergert-kontakt.philip-61a.workers.dev';
 
 function ContactForm() {
   const [f, setF] = React.useState({ name: '', email: '', phone: '', anliegen: '', message: '' });
@@ -23,6 +24,8 @@ function ContactForm() {
   const [errors, setErrors] = React.useState({});
   const [touched, setTouched] = React.useState(false);
   const [sent, setSent] = React.useState(false);
+  const [sending, setSending] = React.useState(false);
+  const [submitError, setSubmitError] = React.useState('');
 
   const set = (k) => (e) => setF((p) => ({ ...p, [k]: e.target.value }));
 
@@ -39,12 +42,32 @@ function ContactForm() {
 
   React.useEffect(() => { if (touched) setErrors(validate(f, consent)); }, [f, consent, touched]);
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     setTouched(true);
     const er = validate(f, consent);
     setErrors(er);
-    if (Object.keys(er).length === 0) setSent(true);
+    if (Object.keys(er).length > 0) return;
+
+    setSending(true);
+    setSubmitError('');
+    try {
+      const res = await fetch(WORKER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(f),
+      });
+      const data = await res.json();
+      if (data.ok) {
+        setSent(true);
+      } else {
+        setSubmitError(data.error || 'Fehler beim Senden. Bitte versuchen Sie es erneut.');
+      }
+    } catch {
+      setSubmitError('Verbindungsfehler. Bitte rufen Sie uns an oder versuchen Sie es später erneut.');
+    } finally {
+      setSending(false);
+    }
   };
 
   if (sent) {
@@ -52,7 +75,7 @@ function ContactForm() {
       <div style={{ background: 'var(--white)', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-sm)', padding: 'var(--space-7) var(--space-6)', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 'var(--space-3)' }}>
         <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 56, height: 56, borderRadius: 999, background: 'var(--green-100)', color: 'var(--green-600)' }}><Check size={28} /></span>
         <h3 style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 'var(--text-h3)', color: 'var(--text-heading)', margin: 0 }}>Vielen Dank für Ihre Anfrage!</h3>
-        <p style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-base)', color: 'var(--text-secondary)', maxWidth: 380, margin: 0 }}>Wir melden uns in der Regel innerhalb eines Werktags bei Ihnen. <span style={{ color: 'var(--text-muted)' }}>(Demo – es wurde nichts gesendet.)</span></p>
+        <p style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-base)', color: 'var(--text-secondary)', maxWidth: 380, margin: 0 }}>Wir melden uns in der Regel innerhalb eines Werktags bei Ihnen.</p>
         <Button variant="secondary" size="sm" onClick={() => { setSent(false); setF({ name: '', email: '', phone: '', anliegen: '', message: '' }); setConsent(false); setTouched(false); }} style={{ marginTop: 8 }}>Neue Anfrage</Button>
       </div>
     );
@@ -74,12 +97,18 @@ function ContactForm() {
         <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)}
           style={{ width: 20, height: 20, marginTop: 2, accentColor: 'var(--oak-500)', flex: 'none', cursor: 'pointer' }} />
         <span style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-sm)', lineHeight: 1.55, color: 'var(--text-secondary)' }}>
-          Ich habe die <a href="#" onClick={(e) => e.preventDefault()} style={{ color: 'var(--oak-600)', textDecoration: 'underline', textUnderlineOffset: 2 }}>Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zur Bearbeitung der Anfrage zu. <span style={{ color: 'var(--accent-brand)' }}>*</span>
+          Ich habe die <a href="datenschutz.html" style={{ color: 'var(--oak-600)', textDecoration: 'underline', textUnderlineOffset: 2 }}>Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zur Bearbeitung der Anfrage zu. <span style={{ color: 'var(--accent-brand)' }}>*</span>
         </span>
       </label>
       {errors.consent && <span style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-xs)', color: 'var(--accent-brand)', marginTop: -8 }}>{errors.consent}</span>}
 
-      <Button type="submit" variant="primary" fullWidth iconRight={<ArrowRight size={17} />}>Anfrage senden</Button>
+      {submitError && (
+        <p style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-sm)', color: 'var(--accent-brand)', margin: 0, padding: 'var(--space-3)', background: 'var(--red-50, #fff0f0)', borderRadius: 'var(--radius-sm)', border: '1px solid var(--red-200, #fecaca)' }}>{submitError}</p>
+      )}
+
+      <Button type="submit" variant="primary" fullWidth iconRight={sending ? null : <ArrowRight size={17} />} disabled={sending}>
+        {sending ? 'Wird gesendet …' : 'Anfrage senden'}
+      </Button>
       <p style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-xs)', color: 'var(--text-muted)', margin: 0, textAlign: 'center' }}>Wir antworten in der Regel innerhalb eines Werktags.</p>
     </form>
   );
