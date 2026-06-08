@@ -1,0 +1,26 @@
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+/_ds/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/photos/*
+  Cache-Control: public, max-age=604800
+
+/assets/logo-hergert.png
+  Cache-Control: public, max-age=604800
+
+/app/site.css
+  Cache-Control: public, max-age=86400
+
+/app/*.js
+  Cache-Control: public, max-age=86400
+
+/app/*.jsx
+  Cache-Control: public, max-age=86400

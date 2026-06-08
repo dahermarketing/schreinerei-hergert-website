@@ -1,0 +1,11 @@
+# Omelette design-tool sidecar (image slot state — not for production)
+.image-slots.state.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
