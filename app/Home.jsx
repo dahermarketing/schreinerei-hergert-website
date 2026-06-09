@@ -47,16 +47,18 @@ const SERVICES = [
 
 function Services() {
   return (
-    <Section tint="var(--cream-50)">
+    <Section tint="#FFFFFF">
       <SectionHeading eyebrow="Leistungen" title="Unsere Leistungen im Überblick" intro="Vom maßgefertigten Einzelstück bis zum kompletten Innenausbau realisieren wir individuelle Wünsche für Privat- und Gewerbekunden." />
       <div className="h-cols-3" style={{ marginTop: 'var(--space-6)' }}>
         {SERVICES.map((s) => (
-          <Card key={s.eyebrow} image={`${HA}/photos/${s.img}`} imageAlt={s.title} eyebrow={s.eyebrow} title={s.title}
-            href="leistungen.html"
-            footer={<Button variant="ghost" size="sm" iconRight={<ArrowRight size={16} />} style={{ paddingLeft: 0 }}>Mehr erfahren</Button>}
-          >
-            {s.body}
-          </Card>
+          <div key={s.eyebrow} className="h-card-lift">
+            <Card image={`${HA}/photos/${s.img}`} imageAlt={s.title} eyebrow={s.eyebrow} title={s.title}
+              href="leistungen.html"
+              footer={<Button variant="ghost" size="sm" iconRight={<ArrowRight size={16} />} style={{ paddingLeft: 0 }}>Mehr erfahren</Button>}
+            >
+              {s.body}
+            </Card>
+          </div>
         ))}
       </div>
     </Section>
@@ -77,7 +79,7 @@ const TILES = [
 
 function Portfolio() {
   return (
-    <Section>
+    <Section tint="#F1ECE3">
       <SectionHeading eyebrow="Referenzen" title="Ausgewählte Arbeiten" intro="Ein Auszug aus Projekten in Mannheim und der Region – Innenausbau, maßgefertigte Möbel und mehr." />
       <div className="h-portfolio" style={{ marginTop: 'var(--space-6)' }}>
         {TILES.map((t) => (
@@ -90,23 +92,36 @@ function Portfolio() {
 
 function Trust() {
   return (
-    <Section tint="var(--oak-100)">
+    <Section tint="#1C1C1C">
       <div className="h-split">
-        <div style={{ position: 'relative' }}>
-          <image-slot id="home-inhaber" class="h-frame h-portrait-slot" style={{ borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-lg)' }}
-            shape="rounded" radius="12" placeholder="Inhaber- oder Teamfoto hier ablegen"></image-slot>
-          <div style={{ position: 'absolute', left: 'var(--space-3)', bottom: 'var(--space-3)', background: 'var(--white)', borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-md)', padding: '12px 16px', fontFamily: 'var(--font-sans)', fontSize: 'var(--text-sm)' }}>
-            <div style={{ fontWeight: 600, color: 'var(--text-primary)' }}>Familie Hergert</div>
-            <div style={{ color: 'var(--text-secondary)' }}>Inhaber · 3. Generation</div>
-          </div>
+        {/* Owner placeholder — replace with real photo when available */}
+        <div style={{ borderRadius: 'var(--radius-lg)', background: 'rgba(160,120,80,0.12)', border: '1px dashed #BD9B73', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 10, minHeight: 'clamp(340px, 48vw, 520px)', position: 'relative' }}>
+          <span style={{ fontFamily: 'var(--font-display)', fontSize: 52, fontWeight: 600, color: '#876545', lineHeight: 1 }}>AH</span>
+          <div style={{ fontFamily: 'var(--font-sans)', fontSize: 14, fontWeight: 500, color: '#876545', marginTop: 4 }}>Axel Hergert</div>
+          <div style={{ fontFamily: 'var(--font-sans)', fontSize: 12, color: '#BD9B73', letterSpacing: '0.04em' }}>Inhaber · 3. Generation</div>
         </div>
+
+        {/* Text content — fully inline-styled for dark background */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-5)' }}>
-          <SectionHeading eyebrow="Familienbetrieb seit 1928" title="98 Jahre Schreinerhandwerk in Mannheim"
-            intro="Was 1928 als kleine Schreinerei in Mannheim-Sandhofen begann, führen wir heute in dritter Generation. Inhabergeführt von Anfang an – mit der Sorgfalt und Verlässlichkeit, der Privat- und Gewerbekunden seit Generationen vertrauen." />
+          <div>
+            <span style={{ fontFamily: 'var(--font-sans)', fontSize: 11, fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#BD9B73', display: 'inline-block', lineHeight: 1.4 }}>
+              Familienbetrieb seit 1928
+              <span style={{ display: 'block', width: 24, height: 2, background: '#BD9B73', marginTop: 6 }} />
+            </span>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 'var(--text-h2)', lineHeight: 1.12, letterSpacing: '-0.02em', color: '#FFFFFF', margin: 'var(--space-4) 0 var(--space-3)', textWrap: 'pretty' }}>
+              98 Jahre Schreinerhandwerk in Mannheim
+            </h2>
+            <p style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-base)', lineHeight: 1.75, color: '#E9CDA2', margin: 0 }}>
+              Was 1928 als kleine Schreinerei in Mannheim-Sandhofen begann, führen wir heute in dritter Generation. Inhabergeführt von Anfang an – mit der Sorgfalt und Verlässlichkeit, der Privat- und Gewerbekunden seit Generationen vertrauen.
+            </p>
+          </div>
           <div style={{ display: 'flex', gap: 'var(--space-6)', flexWrap: 'wrap' }}>
-            <StatBlock value="1928" label="gegründet" align="left" />
-            <StatBlock value="98" label="Jahre Erfahrung" align="left" accent />
-            <StatBlock value="3." label="Generation" align="left" />
+            {[{ v: '1928', l: 'gegründet' }, { v: '98', l: 'Jahre Erfahrung' }, { v: '3.', l: 'Generation' }].map(({ v, l }) => (
+              <div key={v} style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                <span style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 76, lineHeight: 1, color: '#BD9B73', letterSpacing: '-0.03em' }}>{v}</span>
+                <span style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-sm)', color: '#E9CDA2', textTransform: 'uppercase', letterSpacing: '0.08em' }}>{l}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -125,10 +140,15 @@ function Testimonials() {
   const q = QUOTES[i];
   const go = (d) => setI((p) => (p + d + QUOTES.length) % QUOTES.length);
   return (
-    <Section tint="var(--cream-50)">
+    <Section tint="#F3E7D3">
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 'var(--space-5)' }}>
         <Badge variant="eyebrow">Was Kunden sagen</Badge>
-        <Testimonial quote={q.quote} name={q.name} meta={q.meta} />
+        <div style={{ position: 'relative', maxWidth: 680, width: '100%' }}>
+          <span aria-hidden="true" style={{ position: 'absolute', top: -40, left: -16, fontFamily: 'var(--font-display)', fontSize: 140, color: '#B12E34', opacity: 0.2, lineHeight: 1, pointerEvents: 'none', userSelect: 'none', zIndex: 0 }}>"</span>
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <Testimonial quote={q.quote} name={q.name} meta={q.meta} />
+          </div>
+        </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)', marginTop: 'var(--space-2)' }}>
           <IconButton label="Vorheriges" variant="outline" onClick={() => go(-1)}><ArrowLeft size={18} /></IconButton>
           <div style={{ display: 'flex', gap: 8 }}>
