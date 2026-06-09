@@ -35,17 +35,24 @@ const PAIN_POINTS = [
 
 function PainPoints() {
   return (
-    <Section tint="var(--cream-50)" tight>
-      <SectionHeading eyebrow="Hand aufs Herz" title="Was nervt dich aktuell?" intro="Niemand wechselt den Job, wenn alles perfekt ist." maxWidth="600px" />
+    <Section tint="#1C1C1C" tight>
+      <div style={{ textAlign: 'center', maxWidth: 600, margin: '0 auto', marginBottom: 'var(--space-6)' }}>
+        <span style={{ fontFamily: 'var(--font-sans)', fontSize: 11, fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#BD9B73', display: 'inline-block', lineHeight: 1.4 }}>
+          Hand aufs Herz
+          <span style={{ display: 'block', width: 24, height: 2, background: '#BD9B73', marginTop: 6, marginLeft: 'auto', marginRight: 'auto' }} />
+        </span>
+        <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 'var(--text-h2)', lineHeight: 1.12, letterSpacing: '-0.02em', color: '#FFFFFF', margin: 'var(--space-4) 0 var(--space-3)', textWrap: 'pretty' }}>Was nervt dich aktuell?</h2>
+        <p style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-base)', color: '#E9CDA2', margin: 0, lineHeight: 1.7 }}>Niemand wechselt den Job, wenn alles perfekt ist.</p>
+      </div>
       <div className="h-cols-3" style={{ marginTop: 'var(--space-6)' }}>
         {PAIN_POINTS.map((p) => (
-          <div key={p.title} style={{ background: 'var(--white)', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-lg)', padding: 'var(--space-5)', display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
-            <div style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 'var(--text-h4)', color: 'var(--text-heading)' }}>{p.title}</div>
-            <p style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-base)', lineHeight: 1.7, color: 'var(--text-secondary)', margin: 0 }}>{p.text}</p>
+          <div key={p.title} style={{ background: 'rgba(160,120,80,0.1)', border: '1px solid rgba(160,120,80,0.25)', borderRadius: 'var(--radius-lg)', padding: 'var(--space-5)', display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
+            <div style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 'var(--text-h4)', color: '#FFFFFF' }}>{p.title}</div>
+            <p style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-base)', lineHeight: 1.7, color: '#E9CDA2', margin: 0 }}>{p.text}</p>
           </div>
         ))}
       </div>
-      <p style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 'var(--text-lg)', color: 'var(--oak-600)', textAlign: 'center', marginTop: 'var(--space-6)', marginBottom: 0 }}>
+      <p style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 'var(--text-lg)', color: '#BD9B73', textAlign: 'center', marginTop: 'var(--space-6)', marginBottom: 0 }}>
         Genau das wollen wir ändern.
       </p>
     </Section>
@@ -64,7 +71,7 @@ const BENEFITS = [
 
 function Benefits() {
   return (
-    <Section tight>
+    <Section tint="#F1ECE3" tight>
       <SectionHeading eyebrow="Deine Vorteile" title="Was wir dir bieten" maxWidth="600px" />
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: 'var(--space-3)', marginTop: 'var(--space-6)' }}>
         {BENEFITS.map((b) => (
@@ -126,7 +133,7 @@ function JobCard({ eyebrow, position, subline, aufgaben, anforderungen }) {
 
 function OpenJobs() {
   return (
-    <Section tint="var(--cream-50)" tight>
+    <Section tint="#FFFFFF" tight>
       <SectionHeading eyebrow="Stellenangebote" title="Offene Stellen" maxWidth="600px" />
       <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-5)', marginTop: 'var(--space-6)' }}>
         <div className="job-active">
@@ -174,7 +181,7 @@ function OpenJobs() {
 
 function Initiativbewerbung() {
   return (
-    <Section tight>
+    <Section tint="#F3E7D3" tight>
       <div className="h-split" style={{ alignItems: 'flex-start' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
           <Badge variant="eyebrow">Initiativbewerbung</Badge>
@@ -184,7 +191,7 @@ function Initiativbewerbung() {
           <p style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-base)', lineHeight: 1.75, color: 'var(--text-secondary)', margin: 0 }}>
             Wir freuen uns immer über Initiativbewerbungen von Menschen, die Leidenschaft für das Handwerk mitbringen.
           </p>
-          <div style={{ background: 'var(--cream-50)', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)', padding: 'var(--space-4)' }}>
+          <div style={{ background: 'rgba(255,255,255,0.65)', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)', padding: 'var(--space-4)' }}>
             <p style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-sm)', lineHeight: 1.65, color: 'var(--text-secondary)', margin: 0 }}>
               Für das erste Kennenlernen brauchen wir kein Anschreiben und keinen Lebenslauf.
             </p>

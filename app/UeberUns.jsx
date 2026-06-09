@@ -45,7 +45,7 @@ const MILESTONES = [
 
 function Timeline() {
   return (
-    <Section tint="var(--cream-50)">
+    <Section tint="#FFFFFF">
       <SectionHeading eyebrow="Geschichte" title="Fast ein Jahrhundert Handwerk" intro="Vier Stationen aus der Geschichte eines Mannheimer Familienbetriebs." />
       <div className="h-cols-4" style={{ gap: 'var(--grid-gutter)', marginTop: 'var(--space-6)' }}>
         {MILESTONES.map((m) => (
@@ -68,20 +68,28 @@ const VALUES = [
 
 function Values() {
   return (
-    <Section>
+    <Section tint="#1C1C1C">
       <div className="h-split">
         <div className="h-frame" style={{ borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-md)', aspectRatio: '3 / 4' }}>
           <img src={`${UA}/photos/wandkommode-eiche.jpg`} alt="Detailarbeit aus Eiche" />
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-5)' }}>
-          <SectionHeading eyebrow="Werte" title="Worauf es uns ankommt" />
+          <div>
+            <span style={{ fontFamily: 'var(--font-sans)', fontSize: 11, fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#BD9B73', display: 'inline-block', lineHeight: 1.4 }}>
+              Werte
+              <span style={{ display: 'block', width: 24, height: 2, background: '#BD9B73', marginTop: 6 }} />
+            </span>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 'var(--text-h2)', lineHeight: 1.15, letterSpacing: '-0.02em', color: '#FFFFFF', margin: 'var(--space-4) 0 0', textWrap: 'pretty' }}>
+              Worauf es uns ankommt
+            </h2>
+          </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
             {VALUES.map((v) => (
               <div key={v.title} style={{ display: 'flex', gap: 'var(--space-3)', alignItems: 'flex-start' }}>
-                <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 36, height: 36, borderRadius: 'var(--radius-sm)', background: 'var(--oak-100)', color: 'var(--oak-700)', flex: 'none' }}><Check size={18} /></span>
+                <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 36, height: 36, borderRadius: 'var(--radius-sm)', background: 'rgba(160,120,80,0.2)', color: '#BD9B73', flex: 'none' }}><Check size={18} /></span>
                 <div>
-                  <h3 style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 'var(--text-h4)', color: 'var(--text-heading)', margin: '2px 0 4px' }}>{v.title}</h3>
-                  <p style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-base)', lineHeight: 1.65, color: 'var(--text-secondary)', margin: 0 }}>{v.body}</p>
+                  <h3 style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 'var(--text-h4)', color: '#FFFFFF', margin: '2px 0 4px' }}>{v.title}</h3>
+                  <p style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-base)', lineHeight: 1.65, color: '#E9CDA2', margin: 0 }}>{v.body}</p>
                 </div>
               </div>
             ))}

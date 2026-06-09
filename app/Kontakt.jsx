@@ -131,7 +131,7 @@ function MapEmbed() {
 function Kontakt() {
   return (
     <React.Fragment>
-      <Section tight style={{ paddingTop: 'var(--space-7)', paddingBottom: 'var(--space-6)' }}>
+      <Section tint="#FFFFFF" tight style={{ paddingTop: 'var(--space-7)', paddingBottom: 'var(--space-6)' }}>
         <div style={{ maxWidth: 740 }}>
           <SectionHeading level={1} eyebrow="Kontakt" maxWidth="740px"
             title="Wir freuen uns auf Ihre Anfrage"
@@ -151,7 +151,7 @@ function Kontakt() {
         </div>
       </Section>
 
-      <Section tint="var(--cream-50)" tight>
+      <Section tint="#FFFFFF" tight>
         <div className="h-split" style={{ alignItems: 'center' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
             <Badge variant="eyebrow">Anfahrt</Badge>
@@ -220,7 +220,7 @@ function KontaktFaqItem({ q, a }) {
 
 function KontaktFaq() {
   return (
-    <Section tint="var(--cream-50)" tight>
+    <Section tint="#F1ECE3" tight>
       <SectionHeading eyebrow="FAQ" title="Häufig gestellte Fragen" maxWidth="680px" />
       <div style={{ maxWidth: 720, marginTop: 'var(--space-6)', borderTop: '1px solid var(--border-subtle)' }}>
         {KONTAKT_FAQS.map((item) => <KontaktFaqItem key={item.q} {...item} />)}

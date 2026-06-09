@@ -88,12 +88,16 @@ function Leistungen() {
   return (
     <React.Fragment>
       <PageHero />
-      <Section tint="var(--cream-50)">
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-9)' }}>
-          {BLOCKS.map((b, i) => <DetailBlock key={b.id} block={b} flip={i % 2 === 1} />)}
-        </div>
+      <Section tint="#FFFFFF">
+        <DetailBlock block={BLOCKS[0]} flip={false} />
       </Section>
-      <Section>
+      <Section tint="#F1ECE3">
+        <DetailBlock block={BLOCKS[1]} flip={true} />
+      </Section>
+      <Section tint="#FFFFFF">
+        <DetailBlock block={BLOCKS[2]} flip={false} />
+      </Section>
+      <Section tint="#F1ECE3">
         <SectionHeading eyebrow="Projektbeispiele" title="Handwerk im Detail" intro="Sechs Arbeitsbeispiele aus Mannheim und der Region." />
         <div className="h-portfolio" style={{ marginTop: 'var(--space-6)' }}>
           {GALLERY.map((g) => <PhotoTile key={g.img} image={`${LA}/photos/${g.img}`} imageAlt={`${g.cap} – ${g.meta}`} ratio="4 / 3" caption={g.cap} meta={g.meta} />)}
