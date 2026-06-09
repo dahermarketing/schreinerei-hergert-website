@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /worker-src/
+
+Sitemap: https://www.schreinereihergert.de/sitemap.xml

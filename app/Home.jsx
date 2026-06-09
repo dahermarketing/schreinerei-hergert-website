@@ -1,7 +1,7 @@
 /* Home screen — Schreinerei Hergert */
 const { Button, Card, PhotoTile, StatBlock, SectionHeading, Testimonial, IconButton, Badge } = (window.HergertDesignSystem_5a1fa2 || {});
 const { Section, CtaBanner, CONTACT } = (window.HShell || {});
-const { ArrowRight, ArrowLeft, Ruler, Boxes, Building, Check, Phone } = (window.HIcons || {});
+const { ArrowRight, ArrowLeft, Ruler, Boxes, Building, Check, Phone, ChevronDown } = (window.HIcons || {});
 const HA = 'assets';
 
 function Hero() {
@@ -143,6 +143,48 @@ function Testimonials() {
   );
 }
 
+const FAQS = [
+  {
+    q: 'Was kostet ein Maßmöbel bei Schreinerei Hergert?',
+    a: 'Die Kosten hängen von Abmessungen, Materialwahl und Ausführung ab. Einfache Einbauschränke beginnen bei ca. 1.500 €, aufwendigere Schrankwände oder komplette Innenausbauten entsprechend mehr. Wir erstellen Ihnen gerne ein kostenloses, unverbindliches Angebot nach einem persönlichen Beratungsgespräch.',
+  },
+  {
+    q: 'Wie lange dauert die Fertigung eines Maßmöbels?',
+    a: 'Je nach Projektumfang und Auftragslage dauert die Fertigung in der Regel 4 bis 8 Wochen ab Auftragserteilung. Bei komplexeren Projekten wie vollständigem Innenausbau kann es etwas länger sein. Im Erstgespräch nennen wir Ihnen eine konkrete Einschätzung für Ihr Vorhaben.',
+  },
+  {
+    q: 'In welchem Gebiet ist Schreinerei Hergert tätig?',
+    a: 'Wir sind hauptsächlich in Mannheim und der gesamten Rhein-Neckar-Region tätig – darunter Ludwigshafen, Heidelberg, Schwetzingen, Viernheim und Weinheim. Unsere Werkstatt befindet sich in Mannheim-Sandhofen und ist gut über die B44 erreichbar.',
+  },
+];
+
+function FaqItem({ q, a }) {
+  const [open, setOpen] = React.useState(false);
+  return (
+    <div style={{ borderBottom: '1px solid var(--border-subtle)' }}>
+      <button onClick={() => setOpen((o) => !o)} aria-expanded={open}
+        style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 'var(--space-4)', padding: 'var(--space-4) 0', background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left' }}>
+        <span style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 'var(--text-lg)', color: 'var(--text-heading)', lineHeight: 1.35 }}>{q}</span>
+        <span style={{ flex: 'none', color: 'var(--oak-500)', transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.2s ease' }}><ChevronDown size={22} /></span>
+      </button>
+      {open && (
+        <p style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-base)', lineHeight: 1.75, color: 'var(--text-secondary)', margin: '0 0 var(--space-4)' }}>{a}</p>
+      )}
+    </div>
+  );
+}
+
+function Faq() {
+  return (
+    <Section tight>
+      <SectionHeading eyebrow="FAQ" title="Häufig gestellte Fragen" maxWidth="680px" />
+      <div style={{ maxWidth: 720, marginTop: 'var(--space-6)', borderTop: '1px solid var(--border-subtle)' }}>
+        {FAQS.map((item) => <FaqItem key={item.q} {...item} />)}
+      </div>
+    </Section>
+  );
+}
+
 function Home() {
   return (
     <React.Fragment>
@@ -151,6 +193,7 @@ function Home() {
       <Portfolio />
       <Trust />
       <Testimonials />
+      <Faq />
       <CtaBanner />
     </React.Fragment>
   );
