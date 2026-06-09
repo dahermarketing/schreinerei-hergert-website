@@ -175,6 +175,7 @@ img { display: block; max-width: 100%; }
   .h-hero-grid { grid-template-columns: 1fr; gap: var(--space-5); }
   .h-split, .h-split--form { grid-template-columns: 1fr; gap: var(--space-5); }
   .h-cols-3 { grid-template-columns: 1fr; gap: var(--space-4); }
+  .h-job-cols { grid-template-columns: 1fr; }
   .h-footer-grid { grid-template-columns: 1fr; gap: var(--space-5); }
   .h-cookie__card { grid-template-columns: 1fr; }
   .h-cookie__actions { justify-content: stretch; }

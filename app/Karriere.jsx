@@ -80,22 +80,45 @@ function Benefits() {
   );
 }
 
-function JobCard({ position, badge, description, requirements }) {
-  const reqs = requirements.split(' · ');
+function JobCard({ eyebrow, position, subline, aufgaben, anforderungen }) {
   return (
-    <div style={{ background: 'var(--white)', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-lg)', padding: 'var(--space-6)', display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
+    <div style={{ background: 'var(--white)', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-lg)', padding: 'var(--space-6)', display: 'flex', flexDirection: 'column', gap: 'var(--space-5)' }}>
       <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 'var(--space-3)', flexWrap: 'wrap' }}>
-        <h3 style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 'var(--text-h3)', color: 'var(--text-heading)', margin: 0 }}>{position}</h3>
-        <Badge variant="eyebrow">{badge}</Badge>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
+          <span style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-sm)', color: 'var(--text-muted)', letterSpacing: '0.04em', textTransform: 'uppercase' }}>{eyebrow}</span>
+          <h3 style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 'var(--text-h3)', color: 'var(--text-heading)', margin: 0, lineHeight: 1.2 }}>{position}</h3>
+          <p style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-base)', lineHeight: 1.6, color: 'var(--text-secondary)', margin: 0 }}>{subline}</p>
+        </div>
+        <Badge variant="eyebrow">Jetzt gesucht</Badge>
       </div>
-      <p style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-base)', lineHeight: 1.7, color: 'var(--text-secondary)', margin: 0 }}>{description}</p>
-      <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-        {reqs.map((r) => (
-          <span key={r} style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-sm)', color: 'var(--text-muted)', background: 'var(--cream-100, #f5ede0)', borderRadius: 'var(--radius-sm)', padding: '4px 12px', border: '1px solid var(--border-subtle)' }}>{r}</span>
-        ))}
+
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-5)' }} className="h-job-cols">
+        <div>
+          <div style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: 'var(--text-sm)', color: 'var(--text-heading)', marginBottom: 'var(--space-3)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>Dein Aufgabenbereich</div>
+          <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
+            {aufgaben.map((a) => (
+              <li key={a} style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
+                <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 20, height: 20, borderRadius: 999, background: 'var(--oak-100, #f5e6d0)', color: 'var(--oak-600)', flex: 'none', marginTop: 2 }}><Check size={12} /></span>
+                <span style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-sm)', lineHeight: 1.6, color: 'var(--text-body)' }}>{a}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <div style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: 'var(--text-sm)', color: 'var(--text-heading)', marginBottom: 'var(--space-3)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>Was du mitbringen solltest</div>
+          <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
+            {anforderungen.map((r) => (
+              <li key={r} style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
+                <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 20, height: 20, borderRadius: 999, background: 'var(--cream-200, #ede4d6)', color: 'var(--text-muted)', flex: 'none', marginTop: 2 }}><Check size={12} /></span>
+                <span style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-sm)', lineHeight: 1.6, color: 'var(--text-body)' }}>{r}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-      <div>
-        <Button href={`mailto:${CONTACT.email}`} variant="primary" iconRight={<ArrowRight size={16} />}>Jetzt bewerben</Button>
+
+      <div style={{ borderTop: '1px solid var(--border-subtle)', paddingTop: 'var(--space-4)' }}>
+        <Button href={`mailto:${CONTACT.email}`} variant="primary" iconRight={<ArrowRight size={16} />}>Jetzt bewerben — kein Anschreiben nötig</Button>
       </div>
     </div>
   );
@@ -105,21 +128,43 @@ function OpenJobs() {
   return (
     <Section tint="var(--cream-50)" tight>
       <SectionHeading eyebrow="Stellenangebote" title="Offene Stellen" maxWidth="600px" />
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)', marginTop: 'var(--space-6)' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-5)', marginTop: 'var(--space-6)' }}>
         <div className="job-active">
           <JobCard
+            eyebrow="Vollzeit · Mannheim-Sandhofen · ab sofort"
             position="Schreinergeselle (M/W/D)"
-            badge="Jetzt gesucht"
-            description="Für Werkstatt & Montage in der Region Mannheim. Regionale Projekte statt weiter Reisen."
-            requirements="Abgeschlossene Schreiner-Ausbildung · Führerschein B"
+            subline="Für Werkstatt & Montage in der Region Mannheim. Regionale Projekte statt weiter Reisen."
+            aufgaben={[
+              'Ganzheitliches Arbeiten: Projekte von der Werkstatt bis zum Einbau beim Kunden',
+              'Fertigung: Bedienung unseres modernen Maschinenparks inkl. CNC für präzise Ergebnisse',
+              'Montage: Fachgerechter Einbau und Kundenbetreuung vor Ort (Privat & Industrie)',
+              'Teamwork: Enge Zusammenarbeit mit den Kollegen auf Augenhöhe',
+            ]}
+            anforderungen={[
+              'Abgeschlossene Ausbildung als Schreiner',
+              'Idealerweise Berufserfahrung — Berufseinsteiger ausdrücklich willkommen',
+              'Hohes Verantwortungsbewusstsein und selbstständige Arbeitsweise',
+              'Führerschein Klasse B',
+            ]}
           />
         </div>
         <div className="job-active">
           <JobCard
+            eyebrow="Vollzeit · Mannheim-Sandhofen · ab sofort"
             position="Schreinermeister (M/W/D)"
-            badge="Jetzt gesucht"
-            description="Verantwortungsvolle Stelle mit Projekt-Verantwortung von der Planung bis zur Fertigung und Montage."
-            requirements="Schreiner-Ausbildung + Meisterbrief · Führerschein B"
+            subline="Verantwortungsvolle Stelle mit eigenem Projektbereich — von der Planung bis zur Übergabe."
+            aufgaben={[
+              'Betreuung von Projekten von der Planung bis zur Fertigung und Montage',
+              'Kundenberatung und Angebotskalkulation',
+              'Eigenverantwortliche Projektsteuerung',
+              'Zusammenarbeit mit dem Team und externen Dienstleistern',
+            ]}
+            anforderungen={[
+              'Abgeschlossene Schreiner-Ausbildung mit Meisterbrief',
+              'Idealerweise Berufserfahrung — ambitionierte Einsteiger willkommen',
+              'Unternehmerisches Denken und hoher Qualitätsanspruch',
+              'Führerschein Klasse B',
+            ]}
           />
         </div>
       </div>
