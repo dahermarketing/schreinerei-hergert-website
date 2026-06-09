@@ -18,6 +18,7 @@ const NAV = [
   { label: 'Home', href: 'index.html', key: 'home' },
   { label: 'Leistungen', href: 'leistungen.html', key: 'leistungen' },
   { label: 'Über uns', href: 'ueber-uns.html', key: 'ueber' },
+  { label: 'Karriere', href: 'karriere.html', key: 'karriere' },
   { label: 'Kontakt', href: 'kontakt.html', key: 'kontakt' },
 ];
 
