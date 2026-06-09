@@ -7,20 +7,11 @@
 /_ds/*
   Cache-Control: public, max-age=31536000, immutable
 
-/assets/fonts/*
+/assets/*
   Cache-Control: public, max-age=31536000, immutable
 
-/assets/photos/*
-  Cache-Control: public, max-age=604800
+/app/*
+  Cache-Control: public, max-age=86400
 
-/assets/logo-hergert.png
-  Cache-Control: public, max-age=604800
-
-/app/site.css
-  Cache-Control: no-cache
-
-/app/*.js
-  Cache-Control: no-cache
-
-/app/*.jsx
-  Cache-Control: no-cache
+/*.html
+  Cache-Control: public, max-age=3600

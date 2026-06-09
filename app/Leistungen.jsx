@@ -27,19 +27,19 @@ const BLOCKS = [
   {
     id: 'möbel', eyebrow: 'Möbel nach Maß', title: 'Maßgeschreinert und nicht von der Stange',
     body: 'Ob Waschtisch, Esstisch, Sideboard oder Garderobe – wir fertigen Möbel, die es so nicht zu kaufen gibt. Jedes Stück entsteht in unserer Werkstatt, abgestimmt auf Ihren Raum, Ihre Maße und Ihren Stil.',
-    img: 'waschtisch-schwebend.jpg',
+    img: 'waschtisch-schwebend.jpg', imgW: 3024, imgH: 4032,
     bullets: ['Massivholz & Furniere in Eiche, Nussbaum u. a.', 'Grifflose Fronten und feine Detaillösungen', 'Vom Entwurf bis zur Montage aus einer Hand'],
   },
   {
     id: 'innenausbau', eyebrow: 'Innenausbau', title: 'Raumpotenzial intelligent nutzen',
     body: 'Dachschrägen, Nischen, Treppenräume: Wir verwandeln schwierige Grundrisse in durchdachten Stauraum. Passgenaue Einbauschränke und Einbauten, die jeden Zentimeter sinnvoll nutzen.',
-    img: 'dachschraegenschrank-led.jpg',
+    img: 'dachschraegenschrank-led.jpg', imgW: 1071, imgH: 1008,
     bullets: ['Einbauschränke für Dachschrägen & Nischen', 'Integrierte Beleuchtung und Technik', 'Hauswirtschafts- und Ankleidelösungen'],
   },
   {
     id: 'gewerbelösungen', eyebrow: 'Gewerbelösungen', title: 'Maßarbeit für Unternehmen',
     body: 'Von Empfangsbereichen über Teeküchen bis zu Trennwänden und Staubschutz – wir realisieren maßgeschneiderte Einrichtungen für Büros, Praxen und Gewerbe in der Region.',
-    img: 'trennwaende-buero.jpg',
+    img: 'trennwaende-buero.jpg', imgW: 1216, imgH: 874,
     bullets: ['Empfangstheken & Büroeinrichtung', 'Glas- und Holztrennwände', 'Termingerechte, saubere Ausführung'],
   },
 ];
@@ -47,7 +47,7 @@ const BLOCKS = [
 function DetailBlock({ block, flip }) {
   const media = (
     <div className="h-frame" style={{ borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-md)', aspectRatio: '4 / 3' }}>
-      <img src={`${LA}/photos/${block.img}`} alt={block.title} />
+      <img src={`${LA}/photos/${block.img}`} alt={block.title} loading="lazy" width={block.imgW} height={block.imgH} />
     </div>
   );
   const text = (

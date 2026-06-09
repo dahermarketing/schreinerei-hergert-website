@@ -71,7 +71,7 @@ function Values() {
     <Section tint="#1C1C1C">
       <div className="h-split">
         <div className="h-frame" style={{ borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-md)', aspectRatio: '3 / 4' }}>
-          <img src={`${UA}/photos/wandkommode-eiche.jpg`} alt="Detailarbeit aus Eiche" />
+          <img src={`${UA}/photos/wandkommode-eiche.jpg`} alt="Detailarbeit aus Eiche" loading="lazy" width={3024} height={4032} />
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-5)' }}>
           <div>

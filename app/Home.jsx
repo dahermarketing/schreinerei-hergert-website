@@ -26,7 +26,7 @@ function Hero() {
         </div>
         <div style={{ position: 'relative' }}>
           <div className="h-frame" style={{ borderRadius: 'var(--radius-xl)', boxShadow: 'var(--shadow-lg)', aspectRatio: '4 / 5' }}>
-            <img src={`${HA}/photos/waschtisch-eiche.jpg`} alt="Maßgefertigter Doppelwaschtisch aus Eiche mit Ablage-Nische" />
+            <img src={`${HA}/photos/waschtisch-eiche.jpg`} alt="Maßgefertigter Doppelwaschtisch aus Eiche mit Ablage-Nische" width={1400} height={900} />
           </div>
           <div style={{ position: 'absolute', left: 'var(--space-3)', bottom: 'var(--space-3)', background: 'var(--white)', borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-lg)', padding: '16px 20px', display: 'flex', gap: 'var(--space-4)' }}>
             <StatBlock value="98" label="Jahre" align="left" />

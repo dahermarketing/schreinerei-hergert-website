@@ -56,7 +56,7 @@ function Header({ active }) {
       <header className={`h-header${scrolled ? ' is-scrolled' : ''}`}>
         <div className="h-header__bar">
           <a className="h-logo" href="index.html" aria-label="Schreinerei Hergert — Startseite">
-            <img src={`${ASSET}/logo-hergert.png`} alt="Schreinerei Hergert" />
+            <img src={`${ASSET}/logo-hergert.png`} alt="Schreinerei Hergert" width={2000} height={500} />
           </a>
           <nav className="h-nav" aria-label="Hauptnavigation">
             <ul className="h-nav__list">
@@ -79,7 +79,7 @@ function Header({ active }) {
       <div className={`h-drawer-scrim${open ? ' is-open' : ''}`} onClick={() => setOpen(false)} />
       <aside className={`h-drawer${open ? ' is-open' : ''}`} aria-hidden={!open}>
         <div className="h-drawer__top">
-          <img src={`${ASSET}/logo-hergert.png`} alt="Schreinerei Hergert" />
+          <img src={`${ASSET}/logo-hergert.png`} alt="Schreinerei Hergert" width={2000} height={500} />
           <button className="h-burger" style={{ display: 'inline-flex' }} aria-label="Menü schließen" onClick={() => setOpen(false)}>
             <X size={22} />
           </button>
@@ -130,7 +130,7 @@ function Footer({ active }) {
       <div className="h-wrap" style={{ padding: 'var(--space-8) var(--page-padding) var(--space-5)' }}>
         <div className="h-footer-grid">
           <div>
-            <img src={`${ASSET}/logo-hergert.png`} alt="Schreinerei Hergert" style={{ height: 42, width: 'auto' }} />
+            <img src={`${ASSET}/logo-hergert.png`} alt="Schreinerei Hergert" width={2000} height={500} style={{ height: 42, width: 'auto' }} />
             <p style={{ marginTop: 'var(--space-3)', maxWidth: 340, fontSize: 'var(--text-sm)', lineHeight: 1.7, color: 'var(--text-secondary)' }}>
               Ihr Schreiner in Mannheim-Sandhofen. Maßmöbel &amp; Innenausbau seit 1928 – inhabergeführt in 3. Generation.
             </p>
