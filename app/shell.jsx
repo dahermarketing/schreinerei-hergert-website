@@ -139,7 +139,7 @@ function Footer({ active }) {
                 { Icon: Facebook, href: 'https://www.facebook.com/schreinereihergert', label: 'Schreinerei Hergert auf Facebook' },
                 { Icon: Instagram, href: 'https://www.instagram.com/schreinereihergert', label: 'Schreinerei Hergert auf Instagram' },
               ].map(({ Icon, href, label }) => (
-                <a key={href} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 42, height: 42, borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-default)', color: 'var(--text-secondary)', background: 'var(--white)' }}>
+                <a key={href} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 42, height: 42, borderRadius: 'var(--radius-sm)', color: 'var(--text-secondary)', background: 'transparent' }}>
                   <Icon size={18} />
                 </a>
               ))}

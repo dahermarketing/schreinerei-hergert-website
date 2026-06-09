@@ -74,7 +74,7 @@ function ContactForm() {
     return (
       <div style={{ background: 'var(--white)', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-sm)', padding: 'var(--space-7) var(--space-6)', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 'var(--space-3)' }}>
         <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 56, height: 56, borderRadius: 999, background: 'var(--green-100)', color: 'var(--green-600)' }}><Check size={28} /></span>
-        <h3 style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 'var(--text-h3)', color: 'var(--text-heading)', margin: 0 }}>Vielen Dank für Ihre Anfrage!</h3>
+        <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 'var(--text-h3)', color: 'var(--text-heading)', margin: 0 }}>Vielen Dank für Ihre Anfrage!</h2>
         <p style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-base)', color: 'var(--text-secondary)', maxWidth: 380, margin: 0 }}>Wir melden uns in der Regel innerhalb eines Werktags bei Ihnen.</p>
         <Button variant="secondary" size="sm" onClick={() => { setSent(false); setF({ name: '', email: '', phone: '', anliegen: '', message: '' }); setConsent(false); setTouched(false); }} style={{ marginTop: 8 }}>Neue Anfrage</Button>
       </div>
