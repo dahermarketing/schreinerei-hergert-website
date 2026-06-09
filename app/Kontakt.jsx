@@ -1,7 +1,7 @@
 /* Kontakt screen — Schreinerei Hergert — live form */
 const { Button, Input, Select, Textarea, SectionHeading, Badge } = (window.HergertDesignSystem_5a1fa2 || {});
 const { Section, CONTACT } = (window.HShell || {});
-const { Mail, Phone, MapPin, Clock, Check, ArrowRight, Navigation } = (window.HIcons || {});
+const { Mail, Phone, MapPin, Clock, Check, ArrowRight, Navigation, ChevronDown } = (window.HIcons || {});
 
 function InfoRow({ icon: Icon, label, children }) {
   return (
@@ -174,7 +174,58 @@ function Kontakt() {
           </div>
         </div>
       </Section>
+      <KontaktFaq />
     </React.Fragment>
+  );
+}
+
+const KONTAKT_FAQS = [
+  {
+    q: 'Was kostet ein Maßschrank?',
+    a: 'Jeder Schrank ist ein Einzelstück – der Preis richtet sich nach Maß, Material und Ausstattung. Wir erstellen Ihnen nach einem kostenlosen Aufmaß-Termin ein verbindliches Angebot.',
+  },
+  {
+    q: 'Bauen Sie auch Dachschrägenschränke?',
+    a: 'Ja, das ist eine unserer Spezialitäten. Wir nutzen jeden Zentimeter – auch in schwierigen Schrägenbereichen.',
+  },
+  {
+    q: 'In welchen Bereichen sind Sie tätig?',
+    a: 'Möbel nach Maß, Innenausbau und Gewerbelösungen – von der privaten Küche bis zur Reinraum-Einrichtung für Industriekunden.',
+  },
+  {
+    q: 'Arbeiten Sie auch für Gewerbekunden?',
+    a: 'Ja. Zu unseren Gewerbekunden gehören Unternehmen aus der Metropolregion Rhein-Neckar. Wir fertigen Empfangstheken, Büroeinrichtungen, Teeküchen und spezialisierte Reinraumlösungen.',
+  },
+  {
+    q: 'Seit wann gibt es die Schreinerei Hergert?',
+    a: 'Seit 1928. Wir sind ein inhabergeführter Familienbetrieb in der 3. Generation mit Standort in Mannheim-Sandhofen.',
+  },
+];
+
+function KontaktFaqItem({ q, a }) {
+  const [open, setOpen] = React.useState(false);
+  return (
+    <div style={{ borderBottom: '1px solid var(--border-subtle)' }}>
+      <button onClick={() => setOpen((o) => !o)} aria-expanded={open}
+        style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 'var(--space-4)', padding: 'var(--space-4) 0', background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left' }}>
+        <span style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 'var(--text-lg)', color: 'var(--text-heading)', lineHeight: 1.35 }}>{q}</span>
+        <span style={{ flex: 'none', color: 'var(--oak-500)', transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.2s ease' }}><ChevronDown size={22} /></span>
+      </button>
+      {open && (
+        <p style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-base)', lineHeight: 1.75, color: 'var(--text-secondary)', margin: '0 0 var(--space-4)' }}>{a}</p>
+      )}
+    </div>
+  );
+}
+
+function KontaktFaq() {
+  return (
+    <Section tint="var(--cream-50)" tight>
+      <SectionHeading eyebrow="FAQ" title="Häufig gestellte Fragen" maxWidth="680px" />
+      <div style={{ maxWidth: 720, marginTop: 'var(--space-6)', borderTop: '1px solid var(--border-subtle)' }}>
+        {KONTAKT_FAQS.map((item) => <KontaktFaqItem key={item.q} {...item} />)}
+      </div>
+    </Section>
   );
 }
 

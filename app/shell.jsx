@@ -10,9 +10,9 @@ const CONTACT = {
   phone: '0621 771352',
   tel: 'tel:+496217711352',
   email: 'schreinerei-hergert@t-online.de',
-  street: 'Mannheim-Sandhofen',
-  region: 'Baden-Württemberg',
-  mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Schreinerei+Hergert+Mannheim-Sandhofen',
+  street: 'Schönauer Str. 14',
+  region: '68307 Mannheim-Sandhofen',
+  mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Schreinerei+Hergert+Sch%C3%B6nauer+Stra%C3%9Fe+14+Mannheim',
 };
 const NAV = [
   { label: 'Home', href: 'index.html', key: 'home' },
@@ -134,9 +134,12 @@ function Footer({ active }) {
               Ihr Schreiner in Mannheim-Sandhofen. Maßmöbel &amp; Innenausbau seit 1928 – inhabergeführt in 3. Generation.
             </p>
             <div style={{ display: 'flex', gap: 'var(--space-2)', marginTop: 'var(--space-4)' }}>
-              {[Facebook, Instagram].map((Ic, i) => (
-                <a key={i} href="#" aria-label="Social-Media-Profil" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 42, height: 42, borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-default)', color: 'var(--text-secondary)', background: 'var(--white)' }}>
-                  <Ic size={18} />
+              {[
+                { Icon: Facebook, href: 'https://www.facebook.com/schreinereihergert', label: 'Schreinerei Hergert auf Facebook' },
+                { Icon: Instagram, href: 'https://www.instagram.com/schreinereihergert', label: 'Schreinerei Hergert auf Instagram' },
+              ].map(({ Icon, href, label }) => (
+                <a key={href} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 42, height: 42, borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-default)', color: 'var(--text-secondary)', background: 'var(--white)' }}>
+                  <Icon size={18} />
                 </a>
               ))}
             </div>
