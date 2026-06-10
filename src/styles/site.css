@@ -69,6 +69,8 @@ img { display: block; max-width: 100%; }
 :root {
   --text-hero: 58px;
   --text-h2: 42px;
+  /* #7A7975 (DS default) fails 4.5:1 on all cream/white backgrounds; #6B6259 passes everywhere */
+  --text-muted: #6B6259;
 }
 
 /* ---- Layout primitives ------------------------------------ */

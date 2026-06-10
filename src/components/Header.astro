@@ -42,7 +42,7 @@ const NAV = [
 </header>
 
 <div id="drawer-scrim" class="h-drawer-scrim"></div>
-<aside id="drawer" class="h-drawer" aria-hidden="true">
+<aside id="drawer" class="h-drawer" inert>
   <div class="h-drawer__top">
     <Image src={logoImg} alt="Schreinerei Hergert" width={760} height={190} style="height: 34px; width: auto;" loading="eager" />
     <button id="menu-close" class="h-burger" style="display: inline-flex;" aria-label="Menü schließen">
@@ -85,14 +85,14 @@ const NAV = [
   function openDrawer() {
     drawer?.classList.add('is-open');
     scrim?.classList.add('is-open');
-    drawer?.setAttribute('aria-hidden', 'false');
+    drawer?.removeAttribute('inert');
     openBtn?.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
   }
   function closeDrawer() {
     drawer?.classList.remove('is-open');
     scrim?.classList.remove('is-open');
-    drawer?.setAttribute('aria-hidden', 'true');
+    drawer?.setAttribute('inert', '');
     openBtn?.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
   }
