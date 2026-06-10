@@ -271,7 +271,7 @@ const QUOTES = [
           </button>
           <div style="display: flex; gap: 8px;">
             {QUOTES.map((_, n) => (
-              <button class="testimonial-dot" data-n={n} aria-label={`Stimme ${n + 1}`} style={`border: none; cursor: pointer; width: ${n === 0 ? '24px' : '8px'}; height: 8px; border-radius: 999px; background: ${n === 0 ? 'var(--oak-500)' : 'var(--cream-400)'}; transition: all 0.2s ease;`}></button>
+              <button class="testimonial-dot" data-n={n} aria-label={`Stimme ${n + 1}`} style={`border: none; cursor: pointer; width: ${n === 0 ? '24px' : '8px'}; height: 8px; padding: 18px; margin: -18px; box-sizing: content-box; border-radius: 999px; background: ${n === 0 ? 'var(--oak-500)' : 'var(--cream-400)'}; transition: all 0.2s ease;`}></button>
             ))}
           </div>
           <button id="next-btn" aria-label="Nächstes" style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: var(--radius-sm); background: transparent; border: 1px solid var(--border-default); cursor: pointer; color: var(--text-body);">

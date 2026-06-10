@@ -263,7 +263,7 @@ img { display: block; max-width: 100%; }
 /* ---- Testimonials ----------------------------------------- */
 .testimonial-slide { display: none; }
 .testimonial-slide.is-active { display: block; }
-.testimonial-dot { width: 8px; height: 8px; padding: 18px; margin: -18px; box-sizing: content-box; }
+.testimonial-dot { width: 8px; height: 8px; padding: 18px !important; margin: -18px !important; box-sizing: content-box !important; }
 
 /* ---- Form inputs ------------------------------------------ */
 .form-field { display: flex; flex-direction: column; gap: 6px; }
