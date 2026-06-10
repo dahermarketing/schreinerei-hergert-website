@@ -1,0 +1,77 @@
+---
+import { Image } from 'astro:assets';
+import logoImg from '../assets/logo-hergert.png';
+
+interface Props {
+  active?: string;
+}
+const { active = '' } = Astro.props;
+
+const NAV = [
+  { label: 'Home', href: '/', key: 'home' },
+  { label: 'Leistungen', href: '/leistungen', key: 'leistungen' },
+  { label: 'Über uns', href: '/ueber-uns', key: 'ueber' },
+  { label: 'Karriere', href: '/karriere', key: 'karriere' },
+  { label: 'Kontakt', href: '/kontakt', key: 'kontakt' },
+];
+---
+
+<footer style="background: var(--cream-200); border-top: 1px solid var(--border-subtle);">
+  <div class="h-wrap" style="padding: var(--space-8) var(--page-padding) var(--space-5);">
+    <div class="h-footer-grid">
+      <div>
+        <Image src={logoImg} alt="Schreinerei Hergert" width={760} height={190} style="height: 42px; width: auto;" loading="lazy" />
+        <p style="margin-top: var(--space-3); max-width: 340px; font-size: var(--text-sm); line-height: 1.7; color: var(--text-secondary);">
+          Ihr Schreiner in Mannheim-Sandhofen. Maßmöbel &amp; Innenausbau seit 1928 – inhabergeführt in 3. Generation.
+        </p>
+        <div style="display: flex; gap: var(--space-2); margin-top: var(--space-4);">
+          <a href="https://www.facebook.com/schreinereihergert" target="_blank" rel="noopener noreferrer"
+            aria-label="Schreinerei Hergert auf Facebook"
+            style="display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: var(--radius-sm); color: var(--text-secondary); background: transparent;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/schreinereihergert" target="_blank" rel="noopener noreferrer"
+            aria-label="Schreinerei Hergert auf Instagram"
+            style="display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: var(--radius-sm); color: var(--text-secondary); background: transparent;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+      <nav aria-label="Footer-Navigation">
+        <div class="h-eyebrow" style="color: var(--text-muted); margin-bottom: var(--space-3);">Navigation</div>
+        <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-2);">
+          {NAV.map((l) => (
+            <li>
+              <a href={l.href} style={`font-size: var(--text-base); color: ${active === l.key ? 'var(--text-primary)' : 'var(--text-secondary)'}; font-weight: ${active === l.key ? '600' : '400'}; text-decoration: none;`}>{l.label}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <div>
+        <div class="h-eyebrow" style="color: var(--text-muted); margin-bottom: var(--space-3);">Kontakt</div>
+        <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-3); font-size: var(--text-sm); color: var(--text-body);">
+          <li style="display: flex; gap: 10px; align-items: flex-start;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--oak-500); flex: none; margin-top: 2px;" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Schönauer Str. 14<br>68307 Mannheim-Sandhofen</span>
+          </li>
+          <li style="display: flex; gap: 10px; align-items: center;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--oak-500); flex: none;" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.07 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <a href="tel:+496217711352" style="text-decoration: none;">0621 771352</a>
+          </li>
+          <li style="display: flex; gap: 10px; align-items: center;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--oak-500); flex: none;" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            <a href="mailto:schreinerei-hergert@t-online.de" style="word-break: break-word; text-decoration: none;">schreinerei-hergert@t-online.de</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div style="margin-top: var(--space-6); padding-top: var(--space-4); border-top: 1px solid var(--border-subtle); display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--space-3); font-size: var(--text-xs); color: var(--text-muted);">
+      <span>© 2025 Schreinerei Hergert. Alle Rechte vorbehalten.</span>
+      <span style="display: flex; gap: var(--space-4); flex-wrap: wrap;">
+        <a href="/impressum" style="text-decoration: none; color: inherit;">Impressum</a>
+        <a href="/datenschutz" style="text-decoration: none; color: inherit;">Datenschutz</a>
+        <a href="javascript:Cookiebot.renew()" style="text-decoration: none; color: inherit;">Cookie-Einstellungen</a>
+      </span>
+    </div>
+  </div>
+</footer>

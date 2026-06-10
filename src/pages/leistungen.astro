@@ -1,0 +1,164 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import { Image } from 'astro:assets';
+import img1 from '../assets/photos/waschtisch-schwebend.jpg';
+import img2 from '../assets/photos/dachschraegenschrank-led.jpg';
+import img3 from '../assets/photos/trennwaende-buero.jpg';
+import gal1 from '../assets/photos/badschrank-eiche.jpg';
+import gal2 from '../assets/photos/esszimmer.jpg';
+import gal3 from '../assets/photos/schrank-eiche-ablagefach.jpg';
+import gal4 from '../assets/photos/teekueche-industrie.jpg';
+import gal5 from '../assets/photos/hauswirtschaftsraum.jpg';
+import gal6 from '../assets/photos/dachschraegenschrank-2.jpg';
+
+const BLOCKS = [
+  {
+    id: 'möbel', eyebrow: 'Möbel nach Maß', title: 'Maßgeschreinert und nicht von der Stange',
+    body: 'Ob Waschtisch, Esstisch, Sideboard oder Garderobe – wir fertigen Möbel, die es so nicht zu kaufen gibt. Jedes Stück entsteht in unserer Werkstatt, abgestimmt auf Ihren Raum, Ihre Maße und Ihren Stil.',
+    img: img1, bullets: ['Massivholz & Furniere in Eiche, Nussbaum u. a.', 'Grifflose Fronten und feine Detaillösungen', 'Vom Entwurf bis zur Montage aus einer Hand'],
+    tint: '#FFFFFF', flip: false,
+  },
+  {
+    id: 'innenausbau', eyebrow: 'Innenausbau', title: 'Raumpotenzial intelligent nutzen',
+    body: 'Dachschrägen, Nischen, Treppenräume: Wir verwandeln schwierige Grundrisse in durchdachten Stauraum. Passgenaue Einbauschränke und Einbauten, die jeden Centimeter sinnvoll nutzen.',
+    img: img2, bullets: ['Einbauschränke für Dachschrägen & Nischen', 'Integrierte Beleuchtung und Technik', 'Hauswirtschafts- und Ankleidelösungen'],
+    tint: '#F1ECE3', flip: true,
+  },
+  {
+    id: 'gewerbe', eyebrow: 'Gewerbelösungen', title: 'Maßarbeit für Unternehmen',
+    body: 'Von Empfangsbereichen über Teeküchen bis zu Trennwänden und Staubschutz – wir realisieren maßgeschneiderte Einrichtungen für Büros, Praxen und Gewerbe in der Region.',
+    img: img3, bullets: ['Empfangstheken & Büroeinrichtung', 'Glas- und Holztrennwände', 'Termingerechte, saubere Ausführung'],
+    tint: '#FFFFFF', flip: false,
+  },
+];
+
+const GALLERY = [
+  { img: gal1, cap: 'Badschrank', meta: 'Eiche' },
+  { img: gal2, cap: 'Esszimmer', meta: 'Massivholz' },
+  { img: gal3, cap: 'Einbauschrank', meta: 'Eiche · Ablagefach' },
+  { img: gal4, cap: 'Teeküche', meta: 'Gewerbe' },
+  { img: gal5, cap: 'Hauswirtschaftsraum', meta: 'Stauraum' },
+  { img: gal6, cap: 'Dachschräge', meta: 'Einbau' },
+];
+---
+
+<Layout
+  title="Leistungen – Schreinerei Hergert Mannheim | Möbel, Innenausbau, Gewerbe"
+  description="Maßmöbel, Innenausbau und Gewerbelösungen von Schreinerei Hergert in Mannheim. Handwerk seit 1928 – inhabergeführt in 3. Generation."
+  active="leistungen"
+  canonical="https://www.schreinereihergert.de/leistungen"
+>
+  <!-- Hero -->
+  <section class="h-section h-section--tight" style="padding-top: var(--space-7); padding-bottom: var(--space-5);">
+    <div class="h-wrap">
+      <div style="max-width: 860px;">
+        <span class="h-eyebrow">Leistungen</span>
+        <h1 style="font-family: var(--font-display); font-weight: 600; font-size: var(--text-h1); line-height: 1.1; letter-spacing: -0.02em; color: var(--text-heading); margin: var(--space-3) 0 var(--space-3);">Wo Standard aufhört, fangen wir an</h1>
+        <p style="font-family: var(--font-sans); font-size: var(--text-lg); line-height: 1.7; color: var(--text-secondary); margin: 0;">Drei Schwerpunkte, ein Anspruch: handwerkliche Präzision. Vom einzelnen Möbelstück bis zum kompletten Innenausbau – maßgefertigt für Privat- und Gewerbekunden in Mannheim und der Region.</p>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-5);">
+        {[
+          { icon: `<path d="M21.3 8.7 8.7 21.3c-1 1-2.5 1-3.4 0l-2.6-2.6c-1-1-1-2.5 0-3.4L15.3 2.7c1-1 2.5-1 3.4 0l2.6 2.6c1 1 1 2.5 0 3.4Z"/><path d="m7.5 10.5 2 2"/><path d="m10.5 7.5 2 2"/><path d="m13.5 4.5 2 2"/><path d="m4.5 13.5 2 2"/>`, label: 'Möbel nach Maß', href: '#möbel' },
+          { icon: `<path d="M2.97 12.92A2 2 0 0 0 2 14.63v3.24a2 2 0 0 0 .97 1.71l3 1.8a2 2 0 0 0 2.06 0L12 19v-5.5l-5-3-4.03 2.42Z"/><path d="m7 16.5-4.74-2.85"/><path d="m7 16.5 5-3"/><path d="M7 16.5v5.17"/><path d="M12 13.5V19l3.97 2.38a2 2 0 0 0 2.06 0l3-1.8a2 2 0 0 0 .97-1.71v-3.24a2 2 0 0 0-.97-1.71L17 10.5l-5 3Z"/><path d="m17 16.5-5-3"/><path d="m17 16.5 4.74-2.85"/><path d="M17 16.5v5.17"/><path d="M7.97 4.42A2 2 0 0 0 7 6.13v4.37l5 3 5-3V6.13a2 2 0 0 0-.97-1.71l-3-1.8a2 2 0 0 0-2.06 0l-3 1.8Z"/><path d="M12 8 7.26 5.15"/><path d="m12 8 4.74-2.85"/><path d="M12 13.5V8"/>`, label: 'Innenausbau', href: '#innenausbau' },
+          { icon: `<rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/>`, label: 'Gewerbelösungen', href: '#gewerbe' },
+        ].map(({ icon, label, href }) => (
+          <a href={href} style="display: inline-flex; align-items: center; gap: 10px; padding: 10px 16px; border-radius: var(--radius-pill); border: 1px solid var(--border-default); background: var(--white); font-family: var(--font-sans); font-size: var(--text-sm); font-weight: 600; color: var(--text-body); text-decoration: none;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--oak-600);" aria-hidden="true" set:html={icon}></svg>
+            {label}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {BLOCKS.map((block) => (
+    <section id={block.id} class="h-section" style={`background: ${block.tint}; scroll-margin-top: 100px;`}>
+      <div class="h-wrap">
+        <div class="h-split">
+          {block.flip ? (
+            <>
+              <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+                <span class="h-eyebrow">{block.eyebrow}</span>
+                <h2 style="font-family: var(--font-display); font-weight: 600; font-size: var(--text-h2); line-height: 1.2; letter-spacing: -0.01em; color: var(--text-heading); margin: 0;">{block.title}</h2>
+                <p style="font-family: var(--font-sans); font-size: var(--text-lg); line-height: 1.7; color: var(--text-secondary); margin: 0;">{block.body}</p>
+                <ul style="list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-2);">
+                  {block.bullets.map((b) => (
+                    <li style="display: flex; gap: 10px; align-items: flex-start; font-size: var(--text-base); color: var(--text-body);">
+                      <span style="display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 999px; background: var(--oak-100); color: var(--oak-700); flex: none; margin-top: 1px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                      </span>
+                      {b}
+                    </li>
+                  ))}
+                </ul>
+                <div style="margin-top: var(--space-2);">
+                  <a href="/kontakt" class="btn btn--secondary btn--sm" style="white-space: nowrap;">
+                    Dazu anfragen
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  </a>
+                </div>
+              </div>
+              <div class="h-frame" style="border-radius: var(--radius-lg); box-shadow: var(--shadow-md); aspect-ratio: 4 / 3;">
+                <Image src={block.img} alt={block.title} width={800} height={600} loading="lazy" />
+              </div>
+            </>
+          ) : (
+            <>
+              <div class="h-frame" style="border-radius: var(--radius-lg); box-shadow: var(--shadow-md); aspect-ratio: 4 / 3;">
+                <Image src={block.img} alt={block.title} width={800} height={600} loading="lazy" />
+              </div>
+              <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+                <span class="h-eyebrow">{block.eyebrow}</span>
+                <h2 style="font-family: var(--font-display); font-weight: 600; font-size: var(--text-h2); line-height: 1.2; letter-spacing: -0.01em; color: var(--text-heading); margin: 0;">{block.title}</h2>
+                <p style="font-family: var(--font-sans); font-size: var(--text-lg); line-height: 1.7; color: var(--text-secondary); margin: 0;">{block.body}</p>
+                <ul style="list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-2);">
+                  {block.bullets.map((b) => (
+                    <li style="display: flex; gap: 10px; align-items: flex-start; font-size: var(--text-base); color: var(--text-body);">
+                      <span style="display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 999px; background: var(--oak-100); color: var(--oak-700); flex: none; margin-top: 1px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                      </span>
+                      {b}
+                    </li>
+                  ))}
+                </ul>
+                <div style="margin-top: var(--space-2);">
+                  <a href="/kontakt" class="btn btn--secondary btn--sm" style="white-space: nowrap;">
+                    Dazu anfragen
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  </a>
+                </div>
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- Gallery -->
+  <section class="h-section" style="background: #F1ECE3;">
+    <div class="h-wrap">
+      <div style="max-width: 700px;">
+        <span class="h-eyebrow">Projektbeispiele</span>
+        <h2 style="font-family: var(--font-display); font-weight: 600; font-size: var(--text-h2); line-height: 1.15; letter-spacing: -0.01em; color: var(--text-heading); margin: var(--space-3) 0 var(--space-3);">Handwerk im Detail</h2>
+        <p style="font-family: var(--font-sans); font-size: var(--text-lg); line-height: 1.7; color: var(--text-secondary); margin: 0;">Sechs Arbeitsbeispiele aus Mannheim und der Region.</p>
+      </div>
+      <div class="h-portfolio" style="margin-top: var(--space-6);">
+        {GALLERY.map((g) => (
+          <figure class="photo-tile">
+            <div class="photo-tile__img" style="aspect-ratio: 4 / 3;">
+              <Image src={g.img} alt={`${g.cap} – ${g.meta}`} width={400} height={300} loading="lazy" />
+            </div>
+            <figcaption class="photo-tile__cap">
+              <span class="photo-tile__caption">{g.cap}</span>
+              <span class="photo-tile__meta">{g.meta}</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBanner />
+</Layout>

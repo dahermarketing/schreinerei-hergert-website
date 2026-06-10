@@ -1,0 +1,119 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import { Image } from 'astro:assets';
+import teamImg from '../assets/photos/esszimmer.jpg';
+import valuesImg from '../assets/photos/wandkommode-eiche.jpg';
+
+const MILESTONES = [
+  { year: '1928', title: 'Gründung in Mannheim', body: 'Die Schreinerei Hergert nimmt in Mannheim-Sandhofen ihre Arbeit auf – klassisches Möbelhandwerk.' },
+  { year: '1960er', title: 'Zweite Generation', body: 'Der Betrieb wächst, neue Maschinen ergänzen das traditionelle Handwerk. Erste Gewerbeprojekte.' },
+  { year: '1990er', title: 'Schwerpunkt Innenausbau', body: 'Einbauschränke und passgenaue Lösungen für schwierige Grundrisse werden zum Schwerpunkt.' },
+  { year: 'Heute', title: 'Dritte Generation', body: 'Moderne CNC-Technik trifft auf jahrzehntelange Erfahrung – Maßarbeit für Privat- und Gewerbekunden.' },
+];
+
+const VALUES = [
+  { title: 'Präzision', body: 'Saubere Verarbeitung bis ins letzte Detail – maßgenau, langlebig, ehrlich gebaut.' },
+  { title: 'Regional verwurzelt', body: 'Wir arbeiten für Menschen und Betriebe in Mannheim und der Region – kurze Wege, persönliche Beratung.' },
+  { title: 'Handwerkstradition', body: 'Wissen aus drei Generationen, kombiniert mit moderner Fertigung und aktuellen Materialien.' },
+];
+---
+
+<Layout
+  title="Über uns – Schreinerei Hergert Mannheim | Familienbetrieb seit 1928"
+  description="Schreinerei Hergert in Mannheim-Sandhofen – inhabergeführter Familienbetrieb seit 1928, heute in dritter Generation. Lernen Sie uns und unsere Geschichte kennen."
+  active="ueber"
+  canonical="https://www.schreinereihergert.de/ueber-uns"
+>
+  <!-- Hero -->
+  <section class="h-section h-section--tight" style="padding-top: var(--space-7);">
+    <div class="h-wrap">
+      <div class="h-split">
+        <div style="display: flex; flex-direction: column; gap: var(--space-4);">
+          <span class="h-eyebrow">Über uns · seit 1928</span>
+          <h1 style="font-family: var(--font-display); font-weight: 600; font-size: var(--text-h1); line-height: 1.1; letter-spacing: -0.02em; color: var(--text-heading); margin: 0;">
+            Ein Familienbetrieb in dritter Generation
+          </h1>
+          <p style="font-family: var(--font-sans); font-size: var(--text-lg); line-height: 1.7; color: var(--text-secondary); margin: 0;">
+            Was 1928 als kleine Schreinerei in Mannheim-Sandhofen begann, ist heute ein eingespielter Handwerksbetrieb – inhabergeführt von Anfang an, bis heute. Tradition und moderne Technik gehen bei uns Hand in Hand.
+          </p>
+          <p style="font-family: var(--font-sans); font-size: var(--text-base); line-height: 1.7; color: var(--text-body); margin: 0;">
+            Hinter jedem Projekt steht ein Gesicht: Wir beraten Sie persönlich, planen sorgfältig und fertigen in der eigenen Werkstatt – damit am Ende genau das entsteht, was Sie sich vorgestellt haben.
+          </p>
+          <div style="margin-top: var(--space-2);">
+            <a href="/kontakt" class="btn btn--primary" style="white-space: nowrap;">
+              Kontakt aufnehmen
+              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+        <div style="position: relative;">
+          <div class="h-frame h-portrait-slot" style="border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);">
+            <Image src={teamImg} alt="Werkstatt Schreinerei Hergert" width={600} height={800} loading="eager" style="width: 100%; height: 100%; object-fit: cover;" />
+          </div>
+          <div style="position: absolute; left: var(--space-3); bottom: var(--space-3); background: var(--white); border-radius: var(--radius-md); box-shadow: var(--shadow-md); padding: 12px 16px; font-family: var(--font-sans); font-size: var(--text-sm);">
+            <div style="font-weight: 600; color: var(--text-primary);">Familie Hergert</div>
+            <div style="color: var(--text-secondary);">Inhaber · 3. Generation</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="h-section" style="background: #FFFFFF;">
+    <div class="h-wrap">
+      <div style="max-width: 700px;">
+        <span class="h-eyebrow">Geschichte</span>
+        <h2 style="font-family: var(--font-display); font-weight: 600; font-size: var(--text-h2); line-height: 1.15; letter-spacing: -0.01em; color: var(--text-heading); margin: var(--space-3) 0 var(--space-3);">Fast ein Jahrhundert Handwerk</h2>
+        <p style="font-family: var(--font-sans); font-size: var(--text-lg); line-height: 1.7; color: var(--text-secondary); margin: 0;">Vier Stationen aus der Geschichte eines Mannheimer Familienbetriebs.</p>
+      </div>
+      <div class="h-cols-4" style="gap: var(--grid-gutter); margin-top: var(--space-6);">
+        {MILESTONES.map((m) => (
+          <div style="display: flex; flex-direction: column; gap: var(--space-3); padding-top: var(--space-4); border-top: 2px solid var(--oak-300);">
+            <span style="font-family: var(--font-display); font-weight: 600; font-size: 34px; line-height: 1; color: var(--oak-600);">{m.year}</span>
+            <h3 style="font-family: var(--font-display); font-weight: 600; font-size: var(--text-h4); line-height: 1.25; color: var(--text-heading); margin: 0;">{m.title}</h3>
+            <p style="font-family: var(--font-sans); font-size: var(--text-sm); line-height: 1.65; color: var(--text-secondary); margin: 0;">{m.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Values (dark) -->
+  <section class="h-section" style="background: #1C1C1C;">
+    <div class="h-wrap">
+      <div class="h-split">
+        <div class="h-frame" style="border-radius: var(--radius-lg); box-shadow: var(--shadow-md); aspect-ratio: 3 / 4;">
+          <Image src={valuesImg} alt="Detailarbeit aus Eiche" width={600} height={800} loading="lazy" />
+        </div>
+        <div style="display: flex; flex-direction: column; gap: var(--space-5);">
+          <div>
+            <span style="font-family: var(--font-sans); font-size: 11px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: #BD9B73; display: inline-block; line-height: 1.4;">
+              Werte
+              <span style="display: block; width: 24px; height: 2px; background: #BD9B73; margin-top: 6px;"></span>
+            </span>
+            <h2 style="font-family: var(--font-display); font-weight: 600; font-size: var(--text-h2); line-height: 1.15; letter-spacing: -0.02em; color: #FFFFFF; margin: var(--space-4) 0 0;">
+              Worauf es uns ankommt
+            </h2>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: var(--space-4);">
+            {VALUES.map((v) => (
+              <div style="display: flex; gap: var(--space-3); align-items: flex-start;">
+                <span style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: var(--radius-sm); background: rgba(160,120,80,0.2); color: #BD9B73; flex: none;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                </span>
+                <div>
+                  <h3 style="font-family: var(--font-display); font-weight: 600; font-size: var(--text-h4); color: #FFFFFF; margin: 2px 0 4px;">{v.title}</h3>
+                  <p style="font-family: var(--font-sans); font-size: var(--text-base); line-height: 1.65; color: #E9CDA2; margin: 0;">{v.body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBanner />
+</Layout>

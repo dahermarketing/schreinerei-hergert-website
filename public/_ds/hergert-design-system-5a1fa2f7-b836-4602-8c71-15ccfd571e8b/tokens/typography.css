@@ -1,0 +1,69 @@
+/* ============================================================
+   Hergert Design System — Typography Tokens
+   Display: Spectral (serif) · Text/UI: Hanken Grotesk
+   Stats use tabular figures for "1928 · 98 · 3."
+   ============================================================ */
+
+:root {
+  /* ---- Families ----------------------------------------- */
+  --font-display: 'Spectral', Georgia, 'Times New Roman', serif;
+  --font-sans:    'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --font-mono:    'Hanken Grotesk', ui-monospace, 'SF Mono', Menlo, monospace; /* used with tabular-nums */
+
+  /* ---- Weights ------------------------------------------ */
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+
+  /* ---- Type scale (px) ---------------------------------- */
+  --text-hero:    64px;   /* hero headline   */
+  --text-h1:      48px;
+  --text-h2:      36px;
+  --text-h3:      24px;
+  --text-h4:      20px;
+  --text-lg:      18px;   /* body large      */
+  --text-base:    16px;   /* body            */
+  --text-sm:      14px;
+  --text-xs:      13px;   /* caption         */
+  --text-2xs:     11px;   /* fine print / tag */
+
+  /* Big stat numbers */
+  --text-stat:    64px;
+
+  /* ---- Line heights ------------------------------------- */
+  --leading-tight:   1.08;  /* hero / display */
+  --leading-snug:    1.25;  /* headings       */
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.7;   /* body copy      */
+
+  /* ---- Letter spacing ----------------------------------- */
+  --tracking-tighter: -0.02em;  /* hero / large display */
+  --tracking-tight:   -0.01em;  /* headings */
+  --tracking-normal:  0;
+  --tracking-wide:    0.04em;
+  --tracking-caption: 0.12em;   /* uppercase eyebrows / captions */
+
+  /* ---- Semantic roles (font / size / weight / leading / tracking) ---- */
+  --role-hero-family:    var(--font-display);
+  --role-hero-size:      var(--text-hero);
+  --role-hero-weight:    var(--weight-semibold);
+  --role-hero-leading:   var(--leading-tight);
+  --role-hero-tracking:  var(--tracking-tighter);
+
+  --role-heading-family:  var(--font-display);
+  --role-heading-weight:  var(--weight-semibold);
+  --role-heading-leading: var(--leading-snug);
+  --role-heading-tracking: var(--tracking-tight);
+
+  --role-body-family:    var(--font-sans);
+  --role-body-size:      var(--text-base);
+  --role-body-weight:    var(--weight-regular);
+  --role-body-leading:   var(--leading-relaxed);
+
+  --role-caption-family:  var(--font-sans);
+  --role-caption-size:    var(--text-xs);
+  --role-caption-weight:  var(--weight-semibold);
+  --role-caption-tracking: var(--tracking-caption);
+  --role-caption-transform: uppercase; /* @kind other */
+}

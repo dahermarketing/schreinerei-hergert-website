@@ -1,0 +1,275 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Kontakt – Schreinerei Hergert Mannheim | Jetzt anfragen"
+  description="Kontaktieren Sie Schreinerei Hergert in Mannheim-Sandhofen. Telefon, E-Mail oder Kontaktformular – wir antworten in der Regel innerhalb eines Werktags."
+  active="kontakt"
+  canonical="https://www.schreinereihergert.de/kontakt"
+>
+  <!-- Contact hero + form -->
+  <section class="h-section h-section--tight" style="background: #FFFFFF; padding-top: var(--space-7); padding-bottom: var(--space-6);">
+    <div class="h-wrap">
+      <div style="max-width: 740px;">
+        <span class="h-eyebrow">Kontakt</span>
+        <h1 style="font-family: var(--font-display); font-weight: 600; font-size: var(--text-h1); line-height: 1.1; letter-spacing: -0.02em; color: var(--text-heading); margin: var(--space-3) 0 var(--space-3);">Wir freuen uns auf Ihre Anfrage</h1>
+        <p style="font-family: var(--font-sans); font-size: var(--text-lg); line-height: 1.7; color: var(--text-secondary); margin: 0;">Ob Möbelstück, Einbauschrank oder Gewerbeauftrag – beschreiben Sie uns kurz Ihr Vorhaben. Wir beraten Sie persönlich und unverbindlich.</p>
+      </div>
+      <div class="h-split h-split--form" style="margin-top: var(--space-6);">
+        <!-- Contact Form -->
+        <div>
+          <div id="form-success" style="display: none; background: var(--white); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); padding: var(--space-7) var(--space-6); text-align: center; flex-direction: column; align-items: center; gap: var(--space-3);">
+            <span style="display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 999px; background: var(--green-100); color: var(--green-600);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            </span>
+            <h2 style="font-family: var(--font-display); font-weight: 600; font-size: var(--text-h3); color: var(--text-heading); margin: 0;">Vielen Dank für Ihre Anfrage!</h2>
+            <p style="font-family: var(--font-sans); font-size: var(--text-base); color: var(--text-secondary); max-width: 380px; margin: 0;">Wir melden uns in der Regel innerhalb eines Werktags bei Ihnen.</p>
+            <button id="reset-form" class="btn btn--secondary btn--sm" style="margin-top: 8px;">Neue Anfrage</button>
+          </div>
+
+          <form id="contact-form" novalidate style="background: var(--white); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); padding: var(--space-6); display: flex; flex-direction: column; gap: var(--space-4);">
+            <div class="h-cols-2-form">
+              <div class="form-field">
+                <label class="form-label" for="name">Name <span class="required">*</span></label>
+                <input class="form-input" id="name" name="name" type="text" placeholder="Ihr Name" required autocomplete="name">
+                <span class="form-error" id="name-error" style="display: none;"></span>
+              </div>
+              <div class="form-field">
+                <label class="form-label" for="phone">Telefon</label>
+                <input class="form-input" id="phone" name="phone" type="tel" placeholder="0621 …" autocomplete="tel">
+                <span class="form-helper">Optional</span>
+              </div>
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="email">E-Mail <span class="required">*</span></label>
+              <input class="form-input" id="email" name="email" type="email" placeholder="name@beispiel.de" required autocomplete="email">
+              <span class="form-error" id="email-error" style="display: none;"></span>
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="anliegen">Anliegen <span class="required">*</span></label>
+              <select class="form-select" id="anliegen" name="anliegen" required>
+                <option value="">Bitte wählen</option>
+                <option value="Möbel nach Maß">Möbel nach Maß</option>
+                <option value="Innenausbau">Innenausbau</option>
+                <option value="Gewerbelösungen">Gewerbelösungen</option>
+                <option value="Sonstiges">Sonstiges</option>
+              </select>
+              <span class="form-error" id="anliegen-error" style="display: none;"></span>
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="message">Nachricht <span class="required">*</span></label>
+              <textarea class="form-textarea" id="message" name="message" rows="5" placeholder="Beschreiben Sie kurz Ihr Projekt …" required></textarea>
+              <span class="form-error" id="message-error" style="display: none;"></span>
+            </div>
+            <label style="display: flex; gap: 12px; align-items: flex-start; cursor: pointer;">
+              <input type="checkbox" id="consent" name="consent" style="width: 20px; height: 20px; margin-top: 2px; accent-color: var(--oak-500); flex: none; cursor: pointer;">
+              <span style="font-family: var(--font-sans); font-size: var(--text-sm); line-height: 1.55; color: var(--text-secondary);">
+                Ich habe die <a href="/datenschutz" style="color: var(--oak-600); text-decoration: underline; text-underline-offset: 2px;">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zur Bearbeitung der Anfrage zu. <span style="color: var(--accent-brand);">*</span>
+              </span>
+            </label>
+            <span class="form-error" id="consent-error" style="display: none;"></span>
+            <div id="submit-error" style="display: none; font-family: var(--font-sans); font-size: var(--text-sm); color: var(--accent-brand); padding: var(--space-3); background: #fff0f0; border-radius: var(--radius-sm); border: 1px solid #fecaca;"></div>
+            <button type="submit" id="submit-btn" class="btn btn--primary btn--full">
+              Anfrage senden
+              <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </button>
+            <p style="font-family: var(--font-sans); font-size: var(--text-xs); color: var(--text-muted); margin: 0; text-align: center;">Wir antworten in der Regel innerhalb eines Werktags.</p>
+          </form>
+        </div>
+
+        <!-- Contact info + map -->
+        <div style="display: flex; flex-direction: column; gap: var(--space-5);">
+          <div style="display: flex; flex-direction: column; gap: var(--space-4);">
+            {[
+              { icon: `<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.07 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>`, label: 'Telefon', content: `<a href="tel:+496217711352" style="text-decoration: none;">0621 771352</a>` },
+              { icon: `<rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>`, label: 'E-Mail', content: `<a href="mailto:schreinerei-hergert@t-online.de" style="word-break: break-word; text-decoration: none;">schreinerei-hergert@t-online.de</a>` },
+              { icon: `<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>`, label: 'Adresse', content: `Schönauer Str. 14<br>68307 Mannheim-Sandhofen` },
+              { icon: `<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>`, label: 'Öffnungszeiten', content: `Mo–Fr nach Vereinbarung` },
+            ].map((row) => (
+              <div style="display: flex; gap: var(--space-3); align-items: flex-start;">
+                <span style="display: inline-flex; align-items: center; justify-content: center; width: 46px; height: 46px; border-radius: var(--radius-sm); background: var(--white); border: 1px solid var(--border-subtle); color: var(--oak-600); flex: none;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={row.icon}></svg>
+                </span>
+                <div>
+                  <div class="h-eyebrow" style="color: var(--text-muted); margin-bottom: 4px;">{row.label}</div>
+                  <div style="font-family: var(--font-sans); font-size: var(--text-base); color: var(--text-body); line-height: 1.6;" set:html={row.content}></div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div style="position: relative; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid var(--border-subtle); aspect-ratio: 16 / 10; background: var(--cream-200);">
+            <iframe title="Standort Schreinerei Hergert auf Google Maps" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              src="https://maps.google.com/maps?q=Mannheim-Sandhofen&z=13&output=embed"
+              style="width: 100%; height: 100%; border: 0; display: block; filter: grayscale(0.1) contrast(0.96);"></iframe>
+            <a href="https://www.google.com/maps/search/?api=1&query=Schreinerei+Hergert+Sch%C3%B6nauer+Stra%C3%9Fe+14+Mannheim" target="_blank" rel="noopener noreferrer"
+              style="position: absolute; right: 12px; bottom: 12px; display: inline-flex; align-items: center; gap: 8px; background: var(--white); border-radius: var(--radius-sm); box-shadow: var(--shadow-md); padding: 9px 14px; font-family: var(--font-sans); font-size: var(--text-sm); font-weight: 600; color: var(--text-primary); text-decoration: none;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--oak-600);" aria-hidden="true"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+              Route planen
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Anfahrt -->
+  <section class="h-section h-section--tight" style="background: #FFFFFF;">
+    <div class="h-wrap">
+      <div class="h-split" style="align-items: center;">
+        <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+          <span class="h-eyebrow">Anfahrt</span>
+          <h2 style="font-family: var(--font-display); font-weight: 600; font-size: var(--text-h3); color: var(--text-heading); margin: 0;">So finden Sie uns</h2>
+          <p style="font-family: var(--font-sans); font-size: var(--text-base); line-height: 1.7; color: var(--text-secondary); margin: 0;">
+            Unsere Werkstatt liegt in Mannheim-Sandhofen und ist gut über die B44 erreichbar. Parkmöglichkeiten finden Sie direkt vor Ort. Ein Besuch ist jederzeit nach Vereinbarung möglich – rufen Sie uns gerne vorab an.
+          </p>
+          <div style="display: flex; gap: var(--space-3); margin-top: var(--space-2); flex-wrap: wrap;">
+            <a href="https://www.google.com/maps/search/?api=1&query=Schreinerei+Hergert+Sch%C3%B6nauer+Stra%C3%9Fe+14+Mannheim" target="_blank" rel="noopener noreferrer" class="btn btn--secondary" style="white-space: nowrap;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+              Route planen
+            </a>
+            <a href="tel:+496217711352" class="btn btn--ghost" style="white-space: nowrap;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.07 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              0621 771352
+            </a>
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3);">
+          {[{ k: 'B44', v: 'Direkt erreichbar' }, { k: 'Parken', v: 'Vor Ort möglich' }, { k: 'Termin', v: 'Nach Vereinbarung' }, { k: 'Region', v: 'Mannheim & Umgebung' }].map((x) => (
+            <div style="background: var(--white); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-4);">
+              <div style="font-family: var(--font-display); font-weight: 600; font-size: var(--text-h4); color: var(--oak-600);">{x.k}</div>
+              <div style="font-family: var(--font-sans); font-size: var(--text-sm); color: var(--text-secondary); margin-top: 4px;">{x.v}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="h-section h-section--tight" style="background: #F1ECE3;">
+    <div class="h-wrap">
+      <div style="max-width: 680px;">
+        <span class="h-eyebrow">FAQ</span>
+        <h2 style="font-family: var(--font-display); font-weight: 600; font-size: var(--text-h2); line-height: 1.15; letter-spacing: -0.01em; color: var(--text-heading); margin: var(--space-3) 0 0;">Häufig gestellte Fragen</h2>
+      </div>
+      <div style="max-width: 720px; margin-top: var(--space-6); border-top: 1px solid var(--border-subtle);">
+        {[
+          { q: 'Was kostet ein Maßschrank?', a: 'Jeder Schrank ist ein Einzelstück – der Preis richtet sich nach Maß, Material und Ausstattung. Wir erstellen Ihnen nach einem kostenlosen Aufmaß-Termin ein verbindliches Angebot.' },
+          { q: 'Bauen Sie auch Dachschrägenschränke?', a: 'Ja, das ist eine unserer Spezialitäten. Wir nutzen jeden Zentimeter – auch in schwierigen Schrägenbereichen.' },
+          { q: 'In welchen Bereichen sind Sie tätig?', a: 'Möbel nach Maß, Innenausbau und Gewerbelösungen – von der privaten Küche bis zur Reinraum-Einrichtung für Industriekunden.' },
+          { q: 'Arbeiten Sie auch für Gewerbekunden?', a: 'Ja. Zu unseren Gewerbekunden gehören Unternehmen aus der Metropolregion Rhein-Neckar. Wir fertigen Empfangstheken, Büroeinrichtungen, Teeküchen und spezialisierte Reinraumlösungen.' },
+          { q: 'Seit wann gibt es die Schreinerei Hergert?', a: 'Seit 1928. Wir sind ein inhabergeführter Familienbetrieb in der 3. Generation mit Standort in Mannheim-Sandhofen.' },
+        ].map((item) => (
+          <details class="faq-item">
+            <summary>
+              {item.q}
+              <span class="faq-chevron" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              </span>
+            </summary>
+            <p>{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const WORKER_URL = 'https://schreinerei-hergert-kontakt.philip-61a.workers.dev';
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const successBox = document.getElementById('form-success') as HTMLElement | null;
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement | null;
+  const resetBtn = document.getElementById('reset-form');
+  const submitError = document.getElementById('submit-error') as HTMLElement | null;
+
+  function showErr(id: string, msg: string) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.textContent = msg;
+    el.style.display = msg ? 'block' : 'none';
+    const input = document.getElementById(id.replace('-error', ''));
+    input?.classList.toggle('has-error', !!msg);
+  }
+
+  function validate(): boolean {
+    const name = (document.getElementById('name') as HTMLInputElement).value.trim();
+    const email = (document.getElementById('email') as HTMLInputElement).value.trim();
+    const anliegen = (document.getElementById('anliegen') as HTMLSelectElement).value;
+    const message = (document.getElementById('message') as HTMLTextAreaElement).value.trim();
+    const consent = (document.getElementById('consent') as HTMLInputElement).checked;
+    let ok = true;
+
+    showErr('name-error', name ? '' : 'Bitte geben Sie Ihren Namen an.');
+    if (!name) ok = false;
+
+    showErr('email-error', !email ? 'Bitte geben Sie Ihre E-Mail an.' : !EMAIL_RE.test(email) ? 'Bitte gültige E-Mail angeben.' : '');
+    if (!email || !EMAIL_RE.test(email)) ok = false;
+
+    showErr('anliegen-error', anliegen ? '' : 'Bitte wählen Sie ein Anliegen.');
+    if (!anliegen) ok = false;
+
+    showErr('message-error', message ? '' : 'Bitte beschreiben Sie kurz Ihr Projekt.');
+    if (!message) ok = false;
+
+    showErr('consent-error', consent ? '' : 'Bitte stimmen Sie der Datenschutzerklärung zu.');
+    if (!consent) ok = false;
+
+    return ok;
+  }
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!validate()) return;
+
+    const data = {
+      name: (document.getElementById('name') as HTMLInputElement).value.trim(),
+      email: (document.getElementById('email') as HTMLInputElement).value.trim(),
+      phone: (document.getElementById('phone') as HTMLInputElement).value.trim(),
+      anliegen: (document.getElementById('anliegen') as HTMLSelectElement).value,
+      message: (document.getElementById('message') as HTMLTextAreaElement).value.trim(),
+    };
+
+    if (submitBtn) submitBtn.disabled = true;
+    const arrow = submitBtn?.querySelector('svg');
+    if (arrow) arrow.style.display = 'none';
+    if (submitBtn) submitBtn.childNodes[0].textContent = 'Wird gesendet …';
+    if (submitError) submitError.style.display = 'none';
+
+    try {
+      const res = await fetch(WORKER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      const result = await res.json();
+      if (result.ok) {
+        if (form) form.style.display = 'none';
+        if (successBox) { successBox.style.display = 'flex'; }
+      } else {
+        if (submitError) {
+          submitError.textContent = result.error || 'Fehler beim Senden. Bitte versuchen Sie es erneut.';
+          submitError.style.display = 'block';
+        }
+      }
+    } catch {
+      if (submitError) {
+        submitError.textContent = 'Verbindungsfehler. Bitte rufen Sie uns an oder versuchen Sie es später erneut.';
+        submitError.style.display = 'block';
+      }
+    } finally {
+      if (submitBtn) submitBtn.disabled = false;
+      if (arrow) arrow.style.display = '';
+      if (submitBtn) submitBtn.childNodes[0].textContent = 'Anfrage senden';
+    }
+  });
+
+  resetBtn?.addEventListener('click', () => {
+    form?.reset();
+    if (form) form.style.display = 'flex';
+    if (successBox) successBox.style.display = 'none';
+  });
+</script>

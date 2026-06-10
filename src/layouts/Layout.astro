@@ -1,0 +1,71 @@
+---
+import '../styles/site.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ThumbBar from '../components/ThumbBar.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  active?: string;
+  robots?: string;
+  canonical?: string;
+  ogImage?: string;
+  schemas?: string[];
+  preloadHero?: string;
+}
+
+const {
+  title,
+  description,
+  active = '',
+  robots,
+  canonical,
+  ogImage = '/assets/photos/waschtisch-eiche.jpg',
+  schemas = [],
+  preloadHero,
+} = Astro.props;
+
+const DS = '/_ds/hergert-design-system-5a1fa2f7-b836-4602-8c71-15ccfd571e8b';
+---
+<!doctype html>
+<html lang="de">
+<head>
+  <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js"
+    data-cbid="79593e0f-f8d7-4202-b022-8f62cda4956b"
+    data-blockingmode="auto" type="text/javascript"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  {robots && <meta name="robots" content={robots}>}
+  <meta name="theme-color" content="#F8F5F0">
+  <link rel="icon" href="/assets/logo-hergert.png">
+  {canonical && <link rel="canonical" href={canonical}>}
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="Schreinerei Hergert">
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:image" content={ogImage}>
+
+  {schemas.map((s) => (
+    <script type="application/ld+json" set:html={s}></script>
+  ))}
+
+  <link rel="preload" href={`${DS}/assets/fonts/spectral-600-latin.woff2`} as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href={`${DS}/assets/fonts/hanken-grotesk-400-latin.woff2`} as="font" type="font/woff2" crossorigin>
+  {preloadHero && <link rel="preload" as="image" href={preloadHero}>}
+
+  <link rel="stylesheet" href={`${DS}/styles.css`}>
+</head>
+<body>
+  <Header active={active} />
+  <main class="h-main">
+    <slot />
+  </main>
+  <Footer active={active} />
+  <ThumbBar />
+</body>
+</html>
