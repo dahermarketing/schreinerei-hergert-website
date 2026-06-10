@@ -1,6 +1,14 @@
 # Cloudflare Worker source — already deployed, excluded so Pages ignores it
 worker-src/
 
+# Astro build output
+dist/
+.astro/
+
+# Node
+node_modules/
+package-lock.json
+
 # Omelette design-tool sidecar (image slot state — not for production)
 .image-slots.state.json
 
