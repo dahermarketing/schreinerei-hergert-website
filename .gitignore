@@ -7,6 +7,7 @@ dist/
 
 # Node
 node_modules/
+node_modules/.package-lock.json
 
 # Omelette design-tool sidecar (image slot state — not for production)
 .image-slots.state.json
